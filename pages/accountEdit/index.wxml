@@ -1,0 +1,51 @@
+<!--index.wxml-->
+<import src="../../components/weCropper/weCropper.wxml"/>
+<view  wx:if="{{show==true}}">
+  <view class="cropper-wrapper">
+    <template is="weCropper" data="{{...cropperOpt}}"/>
+  </view>
+  <button
+      class="cropper-buttons"
+      bindtap="getCropperImage">
+    生成图片
+  </button>
+</view>
+<view class="edit-header" wx:if="{{show==false}}">
+  <image src="{{userInfo.avatarUrl}}"  bindtap='onClickImage'></image>
+  <text>添加头像</text>
+</view>
+<form bindsubmit="formSubmit" wx:if="{{show==false}}">
+  <view class="edit-form">
+      <view class="edit-add-item flex">
+        <label>昵称：</label>
+        <input  class="flex-1 grey-color" value="{{userInfo.nickName}}"  name="nickName"   placeholder="请输入用户名"/>
+      </view>
+      <view class="edit-add-item flex">
+        <label>性别：</label>
+        <radio-group class="radio-group" name="gender" bindchange="radioChange">
+          <label class="radio grey-color" >
+            <radio value="0" checked="{{userInfo.gender == 0}}" color="{{color}}"/>男
+          </label>
+          <label class="radio grey-color">
+            <radio value="1" checked="{{userInfo.gender != 0}}" color="{{color}}"/>女
+          </label>
+        </radio-group>
+      </view>
+  </view>
+  
+  <view class="register-add-save">
+    <button  class="btn-default btn-block"  formType="submit" style="background:{{color}};padding:1rpx" >保存</button>
+  </view>
+  <view  class='ored'>
+    ——或——
+  </view>
+  <view class="register-add-save">
+     <button style="background:#09bb07;padding:1rpx" class="btn-default  btn-block" bindtap='getWxUserINfo' >获取微信资料</button>  
+  </view>
+</form>
+<action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+    <block wx:for="{{actionSheetItems}}" wx:key="{{index}}">
+      <action-sheet-item class="item" bindtap="bindTap" data-name="{{item}}">{{item}}</action-sheet-item>
+    </block>
+    <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+</action-sheet> 

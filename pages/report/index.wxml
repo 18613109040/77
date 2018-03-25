@@ -1,0 +1,102 @@
+<form bindsubmit="bindFormSubmit">
+  <view class="view">
+    <!-- 店铺信息  -->
+    <view class="nav">
+      <view class="nav_left">
+        <image class="nav_images" src="{{shopInfo.shopIcon}}"></image>
+      </view>
+      <view class="nav_right">
+        <view class="nav_right_top" decode="{{true}}" space="{{true}}">{{shopInfo.name}}</view>
+        <!-- <text class="nav_right_nav">({{shopInfo.}})</text> -->
+        <view class="nav_right_bottom">{{shopInfo.city+shopInfo.area+shopInfo.address}}</view>
+      </view>
+    </view>
+
+    <!--违规类型  -->
+    <view class="behavior">
+      <view class="be_top" bindtap="onShowCall">
+        <text class="be_top_left">违规类型</text>
+        <text class="be_top_content">{{shopReportType[chooseType].text || "请选择违规类型"}}</text>
+        <view class="be_top_bottom">
+          <image class="be_top_ico" src="../../images/ic_go.png"></image>
+        </view>
+      </view>
+      <view class="be_bottom">
+        <view class='item'>
+          <view class='add-img-content'>
+            <block wx:for="{{imageUrls}}" wx:key="{{index}}">
+              <view class='upload'>
+                <image src='{{item}}' class='img' />
+                <view size="10" data-index="{{index}}" class="ico-images" bindtap="clearImg">
+                  <image src="../../images/popup_Close_black.png" class="ico_img"></image>
+                </view>
+              </view>
+            </block>
+            <image src='../../images/ic-addimg.png' class='img' bindtap='onChangeImage' wx:if="{{imageUrls.length<3}}" />
+          </view>
+        </view>
+
+        <view class="be_bottom_right" wx:if="{{!imageUrls.length}}">
+          <text class="be_bottom_right_top">违规照片</text>
+          <text class="be_bottom_right_bot">最多添加3张</text>
+        </view>
+
+      </view>
+    </view>
+
+    <!--内容说明  -->
+    <view class='sb-content'>
+      <!-- 建议 -->
+      <view class="sb-section sb-top">
+        <textarea class="text_area" auto-height placeholder="补充违规说，以便我们更好的为您服务" name="content" />
+      </view>
+    </view>
+    <!-- 电话 -->
+    <!-- <view class="sb-section sb_bot">
+      <input placeholder="请输入您的手机号，以便我们能及时练习您" name="phone" />
+    </view> -->
+  </view>
+
+  <!-- 提交 -->
+  <view class="message">您提交的信息将会得到严格保密</view>
+  <button class='sb-btn' style='background:{{shopInfo.theme}}' formType="submit"> 提交 </button>
+</form>
+
+
+<view class="classname">
+  <view class="drawer_screen" catchtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+  <view animation="{{animationData}}" class="drawer_box_1" wx:if="{{showModalStatus}}" style="transform:translateY(0px)">
+    <view class='mode-title'>举报商家已提交</view>
+    <view class='content'> 你的提交我们已经收到，7个工作日内客户会自动与你取得联系，请注意接听电话 </view>
+    <view catchtap="powerDrawer" data-statu="close" class='myno'>知道了</view>
+  </view>
+</view>
+
+<!-- 违规内容  -->
+<view wx:if="{{sheetAction==true}}" bindtap="closeMaskAnimation">
+  <view class="drawer"></view>
+  <view class='drawer_boxx' animation="{{animationData}}">
+    <view wx:for="{{shopReportType}}" wx:for-item="item" wx:key="{{index}}" data-index="{{index}}" bindtap='selectRedio'>
+      <view class='drawer-tetx'>
+        <view class="drawer-title">
+          <text class="drawer-top">{{item.text}}</text>
+          <text class="drawer-bot">{{item.info}}</text>
+        </view>
+        <!-- 勾选  -->
+        <view class="drawer-img">
+          <label class="">
+            <icon wx:if="{{chooseType==index}}" type="success" size="20" color="#FF7920" />
+            <icon wx:else type="circle" size="20" />
+          </label>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+  <block wx:for="{{actionSheetItems}}" wx:key="{{index}}">
+    <action-sheet-item class="item" bindtap="bindTap" data-name="{{item}}">{{item}}</action-sheet-item>
+  </block>
+  <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+</action-sheet>

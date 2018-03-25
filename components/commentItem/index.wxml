@@ -1,0 +1,34 @@
+<view class='appraise-li'>
+  <view class='shop-comment'>
+    <image src="{{item.buyerImg}}" class='myImg'></image>
+    <view class='comments'>
+      <view class='t1'>
+        <text class='name text-hidden-1'>{{item.buyerName}}</text>
+        <text class='date'>{{item.createDt}}</text>
+      </view>
+      <view class='t2'>
+        <component-rate value="{{item.score}}" size="{{32}}"/>
+      </view>
+      <view class='t3'>
+        <text class="pingjia"> {{item.commentText}} </text>
+      </view>
+      <!-- <view class='t4'>
+        <image wx:for="{{item.goodsComments}}" wx:for-item="goodsComments" wx:key="{{index}}" src="{{goodsComments.imgUrl}}" class="upImg" data-id='1' data-item="{{goodsComments}}"></image>
+      </view> -->
+      <view class='t4'>
+        <image src="{{item.commentImg1}}" class="upImg" wx:if="{{item.commentImg1}}" bindtap='previewImage' data-id='1' data-item="{{item}}"></image>
+        <image src="{{item.commentImg2}}" class="upImg" wx:if="{{item.commentImg2}}" bindtap='previewImage' data-id='2' data-item="{{item}}"></image>
+        <image src="{{item.commentImg3}}" class="upImg" wx:if="{{item.commentImg3}}" bindtap='previewImage' data-id='3' data-item="{{item}}"></image>
+      </view>
+      <view class='t6' wx:if="{{item.shopReply}}">
+        <text class='replace'>商家回复：</text><text>{{item.shopReply}} </text>
+      </view>
+      <view class='t5'>
+        <navigator url='/pages/addComment/index?id={{item.id}}&type=2' hover-class="none">
+            <view class='edit-btn'>
+            <rich-text name="i" class='iconfont icon-edit'></rich-text>修改</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>

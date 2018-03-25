@@ -1,0 +1,13 @@
+
+@import "../../account/index.wxss";
+.pcontent{
+  margin: 0 !important;
+  border-bottom:1px solid #eaeaea;
+
+}
+.pcontent .item:last-child{
+  border-bottom: 0;
+}
+.pcontent.account-list .item{
+  padding-left: 20rpx;
+}

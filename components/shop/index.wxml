@@ -1,0 +1,31 @@
+
+<view class='header' >
+    <view class='center'>
+      <view class='logo_img'>
+        <image src='{{shopinfo.shopIcon}}' class='logo'></image>
+      </view>
+      <view class='center_text'>
+        <view class='trade_name'>
+          <text>{{shopinfo.name}}</text>
+        </view>
+        <view class='price'>
+          <text decode='{{true}}' space='{{true}}'>起送&nbsp;¥{{shopinfo.minimum}}&nbsp;|&nbsp;配送 ¥{{shopinfo.deliverFee}}</text>
+          <text decode='{{true}}' space='{{true}}'>{{shopinfo.duration}}分钟&nbsp;|&nbsp;{{shopinfo.distance}}</text>
+        </view>
+        <view class='star'>
+          <component-rate value="{{4.8}}" size="{{22}}" />
+          <text>{{4.8}}</text>
+          <text>月售{{shopinfo.sellerQty}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='bottom'>
+      <view class='dress'>
+        <text>地址：{{shopinfo.city+shopinfo.area+shopinfo.address}}</text>
+      </view>
+      <view class='btn' style='background:{{shopinfo.theme}}' bindtap='goToShopByMap'>
+        <text>导航到店</text>
+      </view>
+    </view>
+</view>
+

@@ -1,0 +1,97 @@
+<!--index.wxml-->
+<view class="order-detail-content">
+  <!--订单状态-->
+  <view class="o-detail-top">
+    <view class="o-d-line"></view>
+    <view class="o-d-line"></view>
+    <view class="o-detail-info">
+      <text class="odt1"> {{orderList.statusText}}</text>
+      <text class="odt2" wx:if="{{orderList.status==7}}">支付超时，订单已取消</text>
+      <view style='margin:0px auto'  wx:if="{{orderList.status==5&&orderList.shipType!=2}}">
+        <canvas  hidden="{{canvasHidden}}"  style="width:150px;height:150px;margin-left:{{windowWidth/2-75}}px" canvas-id="mycanvas"/>
+      </view>
+      <text  style='font-size:36rpx' wx:if="{{orderList.status==5&&orderList.shipType!=2}}" >提货码：{{orderList.pickCode}}</text>
+      <text class="btn-order btn-default" bindtap="nextPage" wx:if="{{orderList.status==7}}">看看其它商品</text>
+      <!-- <text class="btn-order btn-default btn-disable" bindtap="Reminder" wx:if="{{orderList.status==5 &&orderList.shipType!==0}}">催单</text> -->
+      <text class="btn-order btn-default" bindtap="cancelOrder" wx:if="{{orderList.status==1 || (orderList.payType==0 && orderList.status==2)}}">取消订单</text>
+      <!-- <text class="btn-order btn-default " bindtap="confirmReceipt" style='background:{{shopInfo.theme}};color: white'>确认收货</text> -->
+      <text class="btn-order btn-default " bindtap="goPay" style='background:{{shopInfo.theme}};color: white' wx:if="{{orderList.status==1 && orderList.payType!=0 }}">立即支付</text>
+      <text class='btn-default btn-order  ' wx:if="{{orderList.status==6 && orderList.evaluateStatus==0}}" bindtap="goComment" style='background:{{shopInfo.theme}};color: white'>去评价</text>
+
+      <!-- <view class="o-small" wx:if="{{orderList.status==5}}" >
+      （后台设置：5分钟内买家可随时点击取消订单，30分钟后才可点击催单）
+      </view> -->
+    </view>
+  </view>
+  <!--订单商品-->
+  <view class="o-detail-pro">
+    <view class="o-detail-t">
+      <view class="order-list">
+        <view class="o-list-item">
+          <view class="o-list-title">
+            <text class="t-name"> {{orderList.shopName}}</text>
+            <text class="t-time">预计完成时间{{ orderList.serviceTime}}</text>
+          </view>
+          <view class="goods-bg">
+            <block wx:for="{{orderList.goods}}" wx:for-item="product" wx:key='proid'>
+              <custom-ordergoods product="{{product}}" color="{{shopInfo.theme || theme}}" />
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="o-detail-item">
+      <text class="it-title">配送费</text>
+      <text class="right small">￥{{orderList.freight}}</text>
+    </view>
+    <view class="o-detail-item" wx:if="{{orderList.promotionType===2 || orderList.promotionType===1}}">
+      <label class='iconfont icon-manjian' wx:if="{{orderList.promotionType===1}}"></label>
+      <label class='iconfont icon-manzhe' wx:if="{{orderList.promotionType===2}}"></label>
+      <text class="it-title">{{orderList.promotionName}}</text>
+      <text class="right small">-￥{{orderList.promotionMoney}}</text>
+    </view>
+    <view class="o-detail-item clearfix">
+      <view class="right it-title">
+        <text>小计</text>
+        <text class="it-price right" style='color:{{color}}'>￥{{orderList.totalMoney}}</text>
+      </view>
+    </view>
+    <view class="o-detail-item clearfix center" bindtap="callPhone">
+      <image src="../../images/phone.png" class="d-phone" mode='widthFix'></image>
+      <text class="d-seller">电话商家</text>
+    </view>
+  </view>
+  <!--订单信息-->
+  <view class="o-detail-bottom">
+    <view class="info-item" wx:if="{{orderList.shipType==1}}">
+      <text class="i-label">期望时间</text>
+      <text class="i-text"> {{orderList.serviceTime}}</text>
+    </view>
+    <view class="info-item">
+      <text class="i-label">配送地址</text>
+      <text class="i-text 1"> {{orderList.address}}</text>
+    </view>
+    <view class="info-item">
+      <text class="i-label"></text>
+      <text class="i-text"> {{orderList.contact}}  {{orderList.phone}}</text>
+    </view>
+    <view class="info-item">
+      <text class="i-label">配送服务</text>
+      <text class="i-text">{{orderList.shipType==1?"由商家提供配送服务":"自提"}}</text>
+    </view>
+  </view>
+  <view class="o-detail-bottom">
+    <view class="info-item">
+      <text class="i-label">订单单号</text>
+      <text class="i-text"> {{orderList.orderCode}}</text>
+    </view>
+    <view class="info-item">
+      <text class="i-label">订单时间</text>
+      <text class="i-text"> {{orderList.createDt}}</text>
+    </view>
+    <view class="info-item">
+      <text class="i-label">支付方式</text>
+      <text class="i-text"> {{orderList.payTypeStr}}</text>
+    </view>
+  </view>
+</view>

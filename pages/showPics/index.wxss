@@ -1,0 +1,28 @@
+/* pages/showPics/index.wxss */
+swiper{
+  height: auto;
+}
+.slide-image{
+  width: 100%;
+  height: auto;
+}
+.swipe-btn-wrapper{
+  position: absolute;
+  left: 0rpx;
+  top:48%;
+  width: 100%;
+
+
+
+}
+.swipe-btn-wrapper  view{
+  display: inline-block;
+}
+.swipe-btn-wrapper .icon-arrow-right{
+  margin-left: 30rpx;
+  float: left;
+}
+.swipe-btn-wrapper .icon-arrow-left{
+  margin-right: 30rpx;
+  float: right;
+}

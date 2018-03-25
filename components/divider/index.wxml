@@ -1,0 +1,3 @@
+<view class='divider divider-with-text'>
+   <span className="divider-inner-text">{{text}}</span>
+</view>

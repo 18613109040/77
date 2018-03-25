@@ -1,0 +1,28 @@
+/* pages/feedback/index.wxss */
+.content{
+  padding: 30rpx;
+}
+textarea,input{
+  background: #FFFFFF;
+  border:1px solid #DDDDDD;
+  border-radius: 3px;
+  padding:16rpx 20rpx;
+  font-size: 14px;
+  color: #999999;
+  width: auto;
+
+}
+textarea{
+  min-height: 130px;
+}
+.submit-btn{
+  background: #FF004C;
+  font-size: 16px;
+  border-radius: 3px;
+  color: #fff;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+.section{
+  margin-bottom: 30rpx;
+}

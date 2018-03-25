@@ -1,0 +1,77 @@
+
+<import src="../../template/toast/index.wxml"/>
+<template is="toast" data="{{ ..._toast_ }}"/>
+<view class="contaner">
+   <view class="flex section top">
+    <view class="classname">
+      <image src="{{shopinfo.shopIcon}}" class="shopimg" ></image>
+    </view>
+    <view class="classname">
+      <view class="shopName text-hidden-1">
+        <text>{{shopinfo.name}}</text>
+      </view>
+      <view class="shopAddress text-hidden-2">
+        <text>{{shopinfo.address}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='section'>
+    <view class='xing-group'>
+      <view class='iconfont icon-xing' style='color:{{sorce>=1?color:"#e5e5e5"}}' data-id="1"  bindtap='clickRader'></view>
+      <view class='iconfont icon-xing' style='color:{{sorce>=2?color:"#e5e5e5"}}'  data-id="2"  bindtap='clickRader'></view>
+      <view class='iconfont icon-xing' style='color:{{sorce>=3?color:"#e5e5e5"}}'  data-id="3"  bindtap='clickRader'></view>
+      <view class='iconfont icon-xing' style='color:{{sorce>=4?color:"#e5e5e5"}}'  data-id="4"  bindtap='clickRader'></view>
+      <view class='iconfont icon-xing' style='color:{{sorce>=5?color:"#e5e5e5"}}'  data-id="5"  bindtap='clickRader'></view>
+    </view>
+    <view class='input-content'>
+      <textarea auto-height class='textarea' value="{{commentText}}" bindinput="bindinput" placeholder='亲，对您购买的商品和服务满意吗？'></textarea>
+    </view>
+    <view class='upload-content flex' >
+      <view wx:if="{{image.length>0}}">
+        <block wx:for="{{image}}" wx:key="{{index}}">
+          <label class='iconfont icon-close colose-icon'  bindtap='closeImage' data-name="{{item}}"></label>
+          <image src='{{item}}' style='width:150rpx;height:150rpx;margin-left:5rpx'></image>
+        </block>
+      </view>
+      <view class='iconfont icon-uploadFile' bindtap='uploadImage' wx:if="{{image.length<=2}}"></view>
+      <view class='text flex-1' wx:if="{{image.length==0}}">
+        <text class='t1'>上传图片</text>
+        <text class='t2'>内容丰富的评价有机会成为优质评价哦</text>
+      </view>
+    </view>
+
+    <view class='goods-content'>
+      <block wx:for="{{goods}}" wx:key="{{index}}" >
+        <view class='item'>
+          <text class='name text-hidden-1'>{{item.goodsName}}</text>
+          <view class='pingfen'>
+            <view class='icon' bindtap='clickIcon' data-id="{{item.id}}" style='color:{{item.evaluationStatus==0?color:""}};border:1px solid {{item.evaluationStatus==0?color:"#EAEAEA"}}'>
+              <rich-text name="i"   class='iconfont icon-zan' ></rich-text> 赞
+            </view>
+            <view class='icon' bindtap='clickIcon2' data-id="{{item.id}}" style='color:{{item.evaluationStatus==1?color:""}};border:1px solid {{item.evaluationStatus==1?color:"#EAEAEA"}}'>
+              <rich-text name="i"  class='iconfont icon-cai' ></rich-text>踩
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class='section radio-content' bindtap='clickAnonymous'>
+     <label class="radio"  >
+        <icon wx:if="{{isAnonymous==1}}" type="success" size="20" color="{{color}}"  /> 
+        <icon wx:else type="circle" size="20"/>
+    </label>
+    <text class='text'>匿名评论</text>
+  </view>
+  <view class='no-section'>
+    <button   class='submit-btn'   style='background:{{color}}' bindtap='submitComment'> {{type==2?"保存":"提交"}} </button>
+  </view>
+</view>
+<action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+    <block wx:for="{{actionSheetItems}}" wx:key="{{index}}">
+      <action-sheet-item class="item" bindtap="bindTap" data-name="{{item}}">{{item}}</action-sheet-item>
+    </block>
+    <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+</action-sheet>

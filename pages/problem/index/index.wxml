@@ -1,0 +1,10 @@
+<!--pages/problemList/index.wxml-->
+<view class='pcontent account-list'>
+   <block wx:for="{{data}}"  wx:key="id">
+      <view  class="item"  bindtap="onNextPage"  data-id='{{item.id}}' data-title='{{item.name}}'>
+        <text>{{item.name}}</text>
+        <image mode="widthFix" class="arrow" src="../../../images/ic_go2.png"></image>
+      </view>
+    </block> 
+</view>
+

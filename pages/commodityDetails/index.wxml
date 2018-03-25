@@ -1,0 +1,65 @@
+<view class="commodity">
+  <swiper class="swiper" autoplay="true" interval="5000" indicator-dots="true" circular="true" duration="1000" indicator-color="#e8e8e8" indicator-active-color="{{shopInfo.theme}}" style="height:{{windowWidth}}px">
+    <block wx:for="{{shopDetails.imgUrls}}" wx:key="unique">
+      <swiper-item>
+        <image src="{{item}}/w_650_h_650" style="width: 100%; " mode="widthFix" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <custom-goods goods="{{shopDetails?shopDetails:shopDetailsinit}}" isRest="{{shopInfo.isRest}}"  color="{{shopInfo.theme || theme}}" shopinfo="{{shopInfo || shopDetailsinit}}" componentType="3" class="custom-goods" />
+  <view class="item people-comment" bindtap='gotoComment' wx:if="{{commentData.data.length>0}}">
+    <text>用户评价({{commentData.totalCount}})</text>
+    <view class="arrow">
+      <text class='more'>查看更多</text>
+      <image mode="widthFix" class='img' src="../../images/ic_go2.png"></image>
+    </view>
+  </view>
+  <view class='comment-ul' wx:if="{{commentData.data.length>0}}">
+    <custom-appraise commentData="{{commentData.data[0]}}"  color="{{shopInfo.theme || theme}}"/>
+  </view>
+  <!-- 商品信息 begin -->
+  <view class="commodity-details">
+    <view class="title">
+      <text>商品信息</text>
+    </view>
+  </view>
+  <view class="commodity-info">
+    <view wx:for="{{shopDetails.detail}}" class="classname" wx:key="{{index}}">
+      <view class="classname" wx:if="{{item.type=='image'}}">
+        <image src="{{item.content}}" style="width:100%" mode="widthFix"></image>
+      </view>
+      <view class="text" wx:if="{{item.type=='text'}}">
+        <text>{{item.content}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 商品信息 end -->
+  <view class="flex footer-b" wx:if="{{shopInfo.isRest==false}}">
+    <!-- <navigator class="flex-2 catr-left" url='/pages/shopcart/index'>
+      <view class="number-rid body-sm" style='background:{{color}}'>
+        <text>{{allnumber?allnumber:0}}</text>  
+      </view>
+      <label class='iconfont icon-shopcart-detail cart-img'> </label>
+    </navigator> -->
+    <view catchtap="gotoCart" style="height:72rpx;width: 72rpx;" class='catr-left'>
+      <view class='number-cart' style="background:{{shopInfo.theme}}" wx:if="{{allnumber>0}}">
+        {{allnumber}}
+      </view>
+      <view class='cart-shop-all' style='border: 1px solid {{shopInfo.theme}}'>
+        <label class='iconfont icon-shopcart ' style="color:{{shopInfo.theme}}"></label>
+      </view>
+    </view>
+    <view>
+      <button class="clearing" bindtap="addCartBtn" style="background:{{shopInfo.theme}}; opacity: 0.6;">
+        加入购物车
+      </button>
+    </view>
+    <view>
+      <button class="clearing" bindtap="goPay" style="background:{{shopInfo.theme}}">
+        立即购买
+      </button>
+    </view>
+  </view>
+</view>
+<custom-carts shoplist="{{shopcart}}" show="{{modelShow}}" allmoney='{{allmoney}}' color="{{shopInfo.theme || theme}}" />

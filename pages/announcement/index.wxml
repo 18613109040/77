@@ -1,0 +1,13 @@
+ <view class="announcement">
+    <view class='title'>
+      {{anno.title}}
+    </view>
+    <view wx:for="{{detail}}" class="" wx:key="{{index}}">
+      <view class="classname" wx:if="{{item.type=='image'}}">
+        <image src="{{item.content}}" style="width:100%" mode="aspectFit"></image>
+      </view>
+      <view class="details" wx:if="{{item.type=='text'}}">
+       <text>{{item.content}}</text>
+      </view>
+    </view>
+  </view>

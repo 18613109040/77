@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "专场商品",
+  "usingComponents": {
+    "custom-goods": "/components/goods/index",
+    "custom-carts": "/components/carts/index"
+  }
+}

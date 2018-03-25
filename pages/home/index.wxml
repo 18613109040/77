@@ -1,0 +1,160 @@
+  <import src="../../template/toast/index.wxml" />
+<template is="toast" data="{{ ..._toast_ }}" /> 
+ <view>
+  <view class="index-body">
+    <view class="flex align-items-center a-top">
+      <view class="name-d text-hidden-1" bindtap="changeAdress">
+        <image src="{{serverImg}}/ic_w_address.png" class="icon-address"></image>
+        <text class="text-address"> {{shopInfo.address}}</text>
+        <image src="{{serverImg}}/ic_w_arrow.png" class="arrow"></image>
+      </view>
+      <view class="flex-6">
+        <navigator url="/pages/search/index" class="search-navigator">
+          <label class="iconfont icon-search-home icon-search"></label>
+          <input class="search-in" placeholder="请输入商品名称" disabled="true" />
+        </navigator>
+      </view>
+    </view>
+    <swiper class="swiper" autoplay="true" interval="5000" indicator-dots="true" circular="true" duration="1000" indicator-color="#e8e8e8" indicator-active-color="{{shopInfo.theme || theme}}">
+      <block wx:for="{{carousel}}" wx:key="paramId">
+        <swiper-item>
+          <image src="{{item.imgUrl}}/w_750_h_360" class="slide-image" bindtap="carouselLink" data-item="{{item}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <navigator url="/pages/shopInfo/index">
+      <view class='shop' >
+        <custom-shops  shopinfo="{{shopInfo}}"></custom-shops>   
+      </view>
+    </navigator>
+    <view wx:if="{{shopInfo.scanFlag==1}}">
+      <image src='../../images/shaoma.png' mode="widthFix" style='width:100%;position: relative;z-index:1' >
+      </image>
+      <view class='liji-saoma' bindtap='sweepCode'>
+        立即扫码<image src='../../images/group1.png'  class='icon-right-goup' ></image>
+      </view>
+    </view>
+    <view class="index-nav" wx:if="{{homeifcation.length>0}}">
+      <block wx:for="{{homeifcation}}" wx:key="unique">
+        <view class="nav-item" bindtap="linktocla" data-item="{{item}}">
+          <view class="nav-icon">
+            <image src="{{item.imgUrl}}" style="width: 112rpx; height: 112rpx;" />
+          </view>
+          <text class="nav-text">{{item.categoryName}}</text>
+        </view>
+      </block>
+    </view>
+   
+    <block wx:for="{{specialsGoods}}" wx:key="index">
+      <view class='section'>
+        <view class='s-item-top' bindtap="toSpecialPage" data-id="{{item.id}}">
+          <image src="{{item.imgUrl}}/w_750_h_300" mode="widthFix" />
+        </view>
+        <view class='s-item-bottom'>
+          <scroll-view class="recommend_scroll_x_box" scroll-x="true" scroll-with-animation>
+            <view class="recommend_hot_box" wx:for="{{item.goods}}" wx:key="index" wx:for-item="citem" bindtap="toDetails" data-id="{{citem.id}}">
+              <image src="{{citem.imageUrl}}" class="recommend_hot_image"></image>
+              <view class='goodsName text-hidden-1 grey'>{{citem.goodsName}}</view>
+              <view class='goodsPrice' style='color:{{shopInfo.theme || theme}}'>
+                <text class='red-color' style='color:{{shopInfo.theme || theme}}'>￥</text>{{citem.price}}</view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+    </block>
+   
+    <view class="renmen">
+      <block>
+        <rich-text class="l-line">——</rich-text>
+        <text>热门商品</text>
+        <rich-text class="r-line">——</rich-text>
+      </block>
+    </view>
+    
+    <block wx:for="{{hotGoods}}" wx:key="{{item.id}}">
+      <view class='bg-host'>
+        <custom-goods goods="{{item}}" isRest="{{shopInfo.isRest}}" componentType="1" class="custom-goods" color="{{shopInfo.theme || theme}}" />
+      </view>
+    </block>
+  </view>
+  <view catchtap="gotoCart" style="height:72rpx;width: 72rpx;" class='moveable-cart'>
+    <view class='number-cart' style="background:{{shopInfo.theme || theme}}" wx:if="{{allnumber>0}}">
+      {{allnumber}}
+    </view>
+    <view class='cart-shop-all' style='border: 1px solid {{shopInfo.theme || theme}}'>
+      <label class='iconfont icon-shopcart ' style="color:{{shopInfo.theme || theme}}"></label>
+    </view>
+  </view>
+  <custom-carts shoplist="{{shopcart}}" show="{{modelShow}}" allmoney='{{allmoney}}'  color="{{shopInfo.theme || theme}}" />
+</view>
+<view>
+  <view class="drawer_screen_2" catchtap="powerDrawer" data-statu="close" wx:if="{{showGoods}}"></view>
+  <view animation="{{animationData2}}" class="drawer_box_2" wx:if="{{showGoods}}">
+    <view class='title'>商品信息</view>
+    <div class="content">
+    <view class="dish-item" >
+      <view class="dish-item-wrp">
+        <navigator url="/pages/commodityDetails/index?id={{codeGoods.id}}" class='op-zindex'>
+          <view class="dish-item-pic">
+            <image class="image" src="{{codeGoods.imageUrl}}" style="width: 128rpx; height: 128rpx;" />
+          </view>
+        </navigator>
+        <view class="dish-item-info">
+          <navigator url="/pages/commodityDetails/index?id={{codeGoods.id}}">
+            <view data-id="{{codeGoods.id}}" class="dish-item-name">
+              {{codeGoods.goodsName}}
+            </view>
+          </navigator>
+          <view class="dish-item-details" wx:if="{{codeGoods.attrValues}}">
+            <text>{{codeGoods.attrValues}}</text>
+          </view>
+          <view class="v-g3">
+            <view class="goods-price" style="color:{{shopInfo.theme || theme}}" wx:if="{{codeGoods.discountFlag==false}}">¥{{codeGoods.price}}</view>
+            <view class='goods-price' wx:if="{{codeGoods.discountFlag==true}}">
+              <text class="price" style="color:{{shopInfo.theme || theme}}">¥{{codeGoods.discountPrice}}</text>
+              <text class='zhekoujia'>¥{{codeGoods.price}}</text>
+            </view>
+            <view class="dish-item-choose" wx:if="{{codeGoods.goodsStock>0}}">
+              <view class="dish-item-count" >
+                <view class="dish-item-tab">
+                  <view hidden="{{codeGoods.number == 0}}" class="dish-item-count-minus" data-id="{{codeGoods.id}}" data-cid="{{codeGoods.id}}" data-itemdata="{{codeGoods}}" bindtap="minusCount">
+                    <label class='iconfont icon-desc' style="color:#ddd"></label>
+                  </view>
+                </view>
+                <view class="dish-item-count-text dish-item-tab">
+                  <text style="color:{{shopInfo.theme || theme}}">{{codeGoods.number}}</text>
+                </view>
+                <view class="dish-item-tab" data-id="{{codeGoods.id}}" hidden="{{codeGoods.number > codeGoods.sales}}" data-cid="{{codeGoods.id}}" data-itemdata="{{codeGoods}}" bindtap="addCount">
+                  <label class='iconfont icon-add' style="color:{{shopInfo.theme || theme}}"></label>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class='zhekou-discount' wx:if="{{codeGoods.discountFlag==true}}">
+            <label class='iconfont icon-zhekou' style='color:{{shopInfo.theme || theme}};margin-right:10rpx;'></label>
+            <text style='color:{{shopInfo.theme || theme}}'>{{codeGoods.discount}}折</text>
+            <text style='color:{{shopInfo.theme || theme}};margin-left:20rpx;'>每人限{{codeGoods.limitNum}}份</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    </div>
+    <view class='flex'>
+      <view class='flex-1 btn-colose'bindtap='cancelModel' > 取消 </view>
+      <view  class='flex-1 btn-add' style='color:{{shopInfo.theme || theme}}' bindtap='addCartModel'> 加入购物车 </view>
+    </view>
+  </view>
+</view>
+<view class='drawer_screen_1' wx:if="{{showIsRest}}">
+  <view class="drawer_box_1">
+    <view>
+      <image src='../../images/3.png' class='bg-isrest'></image>
+    </view>
+    <view class=''>
+      <image class='close-btn' src='../../images/2.png' bindtap='colseBtn'></image>
+    </view>
+    <view >
+      <image src='../../images/1.png' class='goto-btn' bindtap='changeAdress'></image>
+    </view>
+  </view>
+</view>   

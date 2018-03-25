@@ -1,0 +1,29 @@
+<view class='appraise-li'>
+  <view class='shop-comment'>
+    <image src="{{commentData.buyerImg}}/w_200_h_200" class='myImg'></image>
+    <view class='comments'>
+      <view class='t1'>
+        <text class='name text-hidden-1'> {{commentData.buyerName}}</text>
+        <text class='date'> {{commentData.createDt}}</text>
+      </view>
+      <view class='t2'>
+        <view class='iconfont icon-xing' style='color:{{commentData.score>=1?color:"#e5e5e5"}}'></view>
+        <view class='iconfont icon-xing' style='color:{{commentData.score>=2?color:"#e5e5e5"}}'></view>
+        <view class='iconfont icon-xing' style='color:{{commentData.score>=3?color:"#e5e5e5"}}'></view>
+        <view class='iconfont icon-xing' style='color:{{commentData.score>=4?color:"#e5e5e5"}}'></view>
+        <view class='iconfont icon-xing' style='color:{{commentData.score>=5?color:"#e5e5e5"}}'></view>
+      </view>
+      <view class='t3'>
+        <text class="pingjia"> {{commentData.commentText}}</text>
+      </view>
+      <view class='t4'>
+        <image src="{{commentData.commentImg1}}" class="upImg" wx:if="{{commentData.commentImg1}}"  bindtap='previewImage' data-id='1' data-item="{{commentData}}"></image>
+        <image src="{{commentData.commentImg2}}" class="upImg" wx:if="{{commentData.commentImg2}}"  bindtap='previewImage' data-id='2' data-item="{{commentData}}"></image>
+        <image src="{{commentData.commentImg3}}" class="upImg" wx:if="{{commentData.commentImg3}}"  bindtap='previewImage' data-id='3' data-item="{{commentData}}"></image>
+      </view>
+      <view class='t6' wx:if="{{commentData.shopReply}}">
+        {{commentData.shopReply}}
+      </view>
+    </view>
+  </view>
+</view>

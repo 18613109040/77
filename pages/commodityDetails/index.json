@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "usingComponents": {
+    "custom-goods": "/components/goods/index",
+    "custom-carts": "/components/carts/index",
+    "custom-appraise":"/components/appraise/index"
+  }
+}

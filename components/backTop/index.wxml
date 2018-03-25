@@ -1,0 +1,3 @@
+<view class='back-top' hidden='{{showTop==false}}' bindtap='backTop'>
+  <label class='iconfont icon-backtop' style="color:{{color}}" ></label>
+</view>

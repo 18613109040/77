@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "custom-goods": "/components/goods/index",
+    "custom-shops":"/components/shop/index",
+    "custom-carts": "/components/carts/index",
+    "component-freshhome":"/components/freshHome/index"
+  },
+  "enablePullDownRefresh": true
+}

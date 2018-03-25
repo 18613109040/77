@@ -1,0 +1,18 @@
+<view class="dish-item">
+  <view class="dish-item-wrp">
+    <navigator url="/pages/commodityDetails/index?id={{product.goodsId}}">
+      <image class="image" src="{{product.imgUrl}}/w_300_h_300" style="width: 128rpx; height: 128rpx;" />
+    </navigator>
+    <view class="dish-item-info">
+      <view class="text-hidden-2">
+        <label class='iconfont icon-manzhe' wx:if="{{product.discountPrice}}"></label>
+        <text class="dish-item-name"> {{product.goodsName}}</text>
+      </view>
+      <view class="dish-pi">
+        <text class="grey-color">X {{product.quantity}}</text>
+        <text class="right zhekoujia"  wx:if="{{product.discountPrice}}" >￥{{product.price}}</text>
+        <text class="right" style='color:{{color}}'>￥{{product.discountPrice?product.discountPrice:product.price}}</text>
+      </view>
+    </view>
+  </view>
+</view>

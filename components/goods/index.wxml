@@ -1,0 +1,165 @@
+<view class="dish-item" wx:if="{{componentType==1}}">
+  <view class="dish-item-wrp" bindtap='gotoGoods' data-item="{{goods}}">
+    <view  class='op-zindex'>
+      <view class="dish-item-pic">
+        <image class="image" src="{{goods.imageUrl}}" style="width: 128rpx; height: 128rpx;" />
+      </view>
+    </view>
+    <view class="dish-item-info">
+      <view >
+        <view data-id="{{goods.id}}" class="dish-item-name">
+          {{goods.goodsName}}
+          <!-- <text class="text-hidden-2 body-small">{{goods.goodsName}}</text>   -->
+        </view>
+      </view>
+      <view class="dish-item-details">
+        <text class="">库存 {{goods.goodsStock||0}}</text>
+        <text class="goods-stock">月销 {{goods.goodsSalenum||0}}</text>
+        <text class="goods-stock">赞 {{goods.likeNum||0}}</text>
+      </view>
+      <view class="v-g3">
+        <view class="goods-price" style="color:{{color}}" wx:if="{{goods.discountFlag==false}}">¥{{goods.price}}</view>
+        <view class='goods-price' wx:if="{{goods.discountFlag==true}}">
+          <text class="price" style="color:{{color}}">¥{{goods.discountPrice}}</text>
+          <text class='zhekoujia'>¥{{goods.price}}</text>
+        </view>
+        <view class="dish-item-choose" wx:if="{{goods.goodsStock>0&&isRest==false}}">
+          <view class="dish-item-count" wx:if="{{goods.multiKinds==1}}">
+            <text class="xuan-gui-ge" style="background:{{color}}" catchtap="powerDrawer" data-statu="open" data-name="{{goods}}">选规格</text>
+          </view>
+          <view class='dish-item-count' wx:if="{{goods.multiKinds==0&&goods.number==0}}">
+            <view class='add-cart' data-id="{{goods.id}}" data-cid="{{goods.id}}" data-itemdata="{{goods}}" catchtap="addCount">
+              <label class='iconfont icon-addcart' style="color:{{color}}"></label>
+            </view>
+          </view>
+          <view class="dish-item-count" wx:if="{{goods.multiKinds==0&&goods.number!=0}}">
+            <view class="dish-item-tab">
+              <view hidden="{{goods.number == 0}}" class="dish-item-count-minus" data-id="{{goods.id}}" data-cid="{{goods.id}}" data-itemdata="{{goods}}" catchtap="minusCount">
+                <label class='iconfont icon-desc' style="color:#ddd"></label>
+              </view>
+            </view>
+            <view class="dish-item-count-text dish-item-tab">
+              <text style="color:{{color}}">{{goods.number}}</text>
+            </view>
+            <view class="dish-item-tab" data-id="{{goods.id}}" hidden="{{goods.number > goods.sales}}" data-cid="{{goods.id}}" data-itemdata="{{goods}}" catchtap="addCount">
+              <label class='iconfont icon-add' style="color:{{color}}"></label>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class='zhekou-discount' wx:if="{{goods.discountFlag==true}}">
+        <label class='iconfont icon-zhekou' style='color:{{color}};margin-right:10rpx;'></label>
+        <text style='color:{{color}}'>{{goods.discount}}折</text>
+        <text style='color:{{color}};margin-left:20rpx;'>每人限{{goods.limitNum}}份</text>
+      </view>
+    </view>
+
+  </view>
+</view>
+<view class="commodity-content" wx:if="{{componentType==3}}">
+  <view class="commodity-name text-hidden-2">
+    {{goods.goodsName}}
+  </view>
+  <button  open-type="share" class='share-ico' >
+    <label class='iconfont icon-share '></label>
+    <view class='text'>分享</view>
+  </button>
+ 
+  <view class="commodity-goods-salenum">
+    <text class="body-small grey-color">月售 {{goods.goodsSalenum}}</text>
+  </view>
+  <view class="commodity-price">
+    <text class="body-base price-color" style='color:{{color}}'>¥ {{goods.price}}</text>
+  </view>
+  <!--选择数量or规格 begin-->
+  <view class="dish-item-choose-3" wx:if="{{isRest==false}}">
+    <view class="dish-item-count" wx:if="{{goods.multiKinds==1}}">
+      <text class="xuan-gui-ge" style="background:{{color}}" bindtap="powerDrawer" data-statu="open" data-name="{{goods}}">选规格 </text>
+    </view>
+    <view class='dish-item-coun' wx:if="{{goods.multiKinds==0&&goods.number==0}}">
+      <view class='add-cart' data-id="{{goods.id}}" data-cid="{{goods.id}}" data-itemdata="{{goods}}" bindtap="addCount">
+        <label class='iconfont icon-addcart' style="color:{{color}}"></label>
+      </view>
+    </view>
+    <view class="dish-item-count" wx:if="{{goods.multiKinds==0&&goods.number!=0}}">
+      <view class="dish-item-tab">
+        <view hidden="{{goods.number == 0}}" class="dish-item-count-minus" data-id="{{goods.id}}" data-cid="{{goods.id}}" data-itemdata="{{goods}}" bindtap="minusCount">
+          <label class='iconfont icon-desc' style="color:{{greycolor}}"></label>
+        </view>
+      </view>
+      <view class="dish-item-count-text dish-item-tab">
+        <text>{{goods.number}}</text>
+      </view>
+      <view class="dish-item-tab" data-id="{{goods.id}}" hidden="{{goods.number > goods.sales}}" data-itemdata="{{goods}}" bindtap="addCount">
+        <label class='iconfont icon-add' style="color:{{color}}"></label>
+      </view>
+    </view>
+  </view>
+</view>
+<!--弹出层 -->
+<view class="classname">
+  <view class="drawer_screen" catchtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+  <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+    <view class="drawer_title ">
+      <view class="name">
+        <text class="body-base" style='color:{{color}}'>{{modelData.goodsName}}</text>
+      </view>
+      <view class="x-calnel" catchtap="powerDrawer" data-statu="close">
+        <image src="../../images/popup_Close_black.png" style="width: 60rpx; height: 60rpx;"></image>
+      </view>
+    </view>
+    <view class="drawer_content">
+      <view class="drawer-body">
+        <block wx:for="{{goodsSkuList.skulist}}" wx:key="{{index}}">
+          <view class="guige-name">
+            <text>{{item.name}}</text>
+          </view>
+          <view class="gui_ge">
+            <block wx:for="{{item.value}}" wx:for-item="name" wx:key="{{index}}">
+              <text class="rang-change" style="color:{{color}}; border: 1px solid {{color}} ;" data-type="{{item.name}}" wx:if="{{name.check==true}}" data-name="{{name.title}}" bindtap="clickSku">{{name.title}}</text>
+              <text class="rang" data-type="{{item.name}}" wx:if="{{name.check==false}}" data-name="{{name.title}}" bindtap="clickSku">{{name.title}}</text>
+            </block>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="drawer_footer flex align-items-center space-between " wx:if="{{goodsSkuList.noshop==false}}">
+      <view wx:if="{{goodsSkuList.discountFlag==false}}">
+        <text class="money" style='color:{{color}}'>￥{{goodsSkuList.price}}</text>
+      </view>
+      <view wx:if="{{goodsSkuList.discountFlag==true}}">
+        <text class="money" style='color:{{color}}'>￥{{goodsSkuList.discountPrice}}</text>
+        <text class="zhekoujia">￥{{goodsSkuList.price}}</text>
+      </view>
+      <view class="add_cart" wx:if="{{goodsSkuList.number==0}}" style="background:{{color}}">
+        <text class="body-small" bindtap="addCart">加入购物车</text>
+      </view>
+      <view class="dish-item-count" wx:if="{{goodsSkuList.number>0}}">
+        <view class="dish-item-tab">
+          <view hidden="{{goodsSkuList.number == 0}}" class="dish-item-count-minus" bindtap="skuMinusCount">
+            <label class='iconfont icon-desc' style="color:{{greycolor}}"></label>
+          </view>
+        </view>
+        <view class="dish-item-count-text dish-item-tab" hidden="{{item.number==0}}">
+          <text style='color:{{color}}'>{{goodsSkuList.number}}</text>
+        </view>
+        <view class="dish-item-count-plus" hidden="{{goodsSkuList.number >= goodsSkuList.skuStock}}" bindtap="skuAddCount">
+          <label class='iconfont icon-add' style="color:{{color}}"></label>
+        </view>
+      </view>
+    </view>
+    <view class="drawer_footer flex align-items-center " wx:if="{{goodsSkuList.noshop==true}}">
+      <view class="classname">
+        <text style='color:{{color}}'>该型号无货</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="toast_content_box" wx:if="{{isHide}}">
+  <view class="toast_content">
+    <view class="toast_content_text">
+      {{content}}
+    </view>
+  </view>
+</view>

@@ -1,0 +1,130 @@
+<!--index.wxml-->
+<!-- <import src="../../template/tabbar.wxml" />
+<template is="tabBar" data="{{tabBar: tabBar}}" />   -->
+
+<import src="../../template/toast/index.wxml" />
+<template is="toast" data="{{ ..._toast_ }}" />
+<view class="index-body">
+  <view class="flex align-items-center a-top">
+    <navigator class="name-d text-hidden-1"  url="/pages/selectIndex/index?lat={{params.latitude}}&lng={{params.longitude}}" >
+      <image src="{{serverImg}}/ic_w_address.png" class="icon-address"></image>
+      <text class="text-address"> {{address}}</text>
+      <image src="{{serverImg}}/ic_w_arrow.png" class="arrow"></image>
+    </navigator>
+    <view class="flex-1">
+      <view class="search-navigator">
+        <label class="iconfont icon-search-home icon-search"></label>
+        <input class="search-in" placeholder="请输入店铺名" bindinput="shopNameChange" />
+      </view>
+    </view>
+  </view>
+  <!-- 广告位 -->
+  <view class="swiper-view">
+    <swiper
+      class='fff'
+      style="height:150px"
+      bindchange="onChangeSwiper" 
+    >
+      <block wx:for="{{platfromCarousel}}" wx:key='index'>
+        <swiper-item>
+          <image bindtap="onTapImage" data-data="{{item}}"  src="{{item.imgUrl}}" class="slide-image fade_in" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <component-divider/>
+  <!--  -->
+  <view class='nav_list'>
+    <view 
+      class='nav_li'
+      wx:for="{{platformList}}"
+      wx:key="{{index}}"
+      wx:for-item="item"
+    >
+      <view bindtap='onShopListSm' data-data="{{item}}">
+        <image src='{{item.platformIconUrl}}' class='fade_in' style='height:80rpx; width:80rpx'></image>
+        <view>
+          <text>{{item.businessTypeName}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='nav_about_shop'>
+  <navigator>
+    <view class='nav_about_shop_img'></view>
+    <text>附近商家</text>
+  </navigator>
+</view>
+<view class='center_tab'>
+  <view class='center_tab_list' wx:for="{{fiterBar}}" wx:key="{{index}}">
+    <view data-id="{{index}}" class="{{filterindex==index?'red-color':'default'}}" bindtap="clickTab">
+      <text>{{item}}</text>
+      <view class="{{filterindex==index?'line_show':'line_hidden'}}">
+        <view class='bottom_line'></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view>
+  <view class='shop_details' 
+    wx:for="{{shopsList.data}}"
+    wx:for-item="item"
+    wx:key="{{index}}"
+  >
+    <view class='clearfix ' bindtap='switchToShopHome' data-item="{{item}}">
+      <view class="shop_images"  >
+        <image class="logo_icon" src="{{item.businessTypeIconUrl}}"></image>
+        <image src="{{item.shopIcon}}" class='logo_img'></image>
+      </view>
+      <!-- 店铺信息 -->
+      <view  class="shop_info_item" >
+        <comShop item="{{item}}" />
+      </view>
+    </view>
+    <!-- 显示活动信息 -->
+    <view class='purchase'>
+      <block wx:for-index="id" wx:for="{{item.promotionList}}" wx:key="id" wx:for-item="itemName">
+        <view class="p_text">
+          <image class='bottom_img' src='../../images/discount_green@2x.png' wx:if="{{itemName.type===2}}"></image>
+          <image class='bottom_img' src='../../images/spell group_prink@2x.png' wx:if="{{itemName.type===1}}"></image>
+          <text >{{itemName.info||"折扣活动"}}</text>
+        </view>
+      </block>
+      <text wx:if="{{item.promotionList.length}}" class='active-nums'>{{item.promotionList.length}}个活动</text>
+    </view>
+    <!-- 店铺里的商品信息 -->
+    <view wx:if="{{item.recommendGoodsList.length}}" class='shop_show' justify-content="space-between">
+      <view 
+        class='img_list' 
+        wx:for="{{item.recommendGoodsList}}" 
+        wx:for-item="goods"
+        wx:key="goodsId"
+      >
+        <view bindtap='navigateToGoodDetail' data-item="{{item}}" data-id="{{goods.goodsId}}">
+          <image src='{{goods.goodsImgUrl}}' style='width:216rpx; height:216rpx'></image>
+          <text class='sweet'>{{goods.goodsName}}</text>
+          <view>
+            <text class='money'>￥ {{goods.price}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- <view class="{{selected2?'show':'hidden'}}">
+  <view class="phone_one" bindtap="clickPerson">
+    销量最高页面
+  </view>
+</view>
+<view class="{{selected1?'show':'hidden'}}">距离最近页面</view>
+ -->
+
+
+
+
+
+
+
+

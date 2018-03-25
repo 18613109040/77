@@ -1,0 +1,19 @@
+/* pages/specialGoods/index.wxss */
+@import "../home/index.wxss";
+.top-img{
+  width: 100%;
+}
+.top-img .img{
+  width: 100%;
+}
+.fill-content{
+  width: 100%;
+  padding: 20rpx;
+  position: relative;
+}
+.custom-goods{
+  display: block;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  position: relative;
+}

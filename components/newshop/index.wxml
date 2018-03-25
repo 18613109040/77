@@ -1,0 +1,12 @@
+<view class='shop_details_list' >
+  <view class='shop_details_title'>{{item.name}}</view>
+  <view class='center_details'>
+    <component-rate  value="{{item.averageScore}}" />
+
+    <text decode="{{true}}" space="{{true}}"> &nbsp;|&nbsp; 4.8 &nbsp; 月售{{item.sellerQty}}&nbsp;|&nbsp;</text>
+    <text class='time' decode="{{true}}" space="{{true}}">{{item.distance}}&nbsp;|&nbsp;{{item.duration}}分钟</text>
+  </view>
+  <view class='distribution'>
+    <text decode="{{true}}" space="{{true}}">起送&nbsp;￥{{item.minimum}}&nbsp;|&nbsp;配送￥{{item.deliverFee}}</text>
+  </view>
+</view>

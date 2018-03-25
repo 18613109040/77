@@ -1,0 +1,101 @@
+<!-- <import src="../../template/tabbar.wxml" />  
+<template is="tabBar" data="{{tabBar: tabBar}}" />   -->
+<view class="accout">
+  <view class="account-header">
+    <navigator url='/pages/accountEdit/index' wx:if="{{login==true}}">
+      <view class="account-con clearfix" style=' background: {{shopInfo.theme}}'>
+        <image class="account-h-image" src="{{userInfo.avatarUrl}}"></image>
+        <text class="account-h-name">{{userInfo.nickName}}</text>
+      </view>
+    </navigator>
+    <view class="account-con clearfix" style=' background: {{shopInfo.theme}}' wx:if="{{login==false}}" bindtap="gotoLogin">
+      <image class="account-h-image" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'../../images/men.png'}}"></image>
+      <text class="account-h-name">您还没有登录/点击登录</text>
+    </view>
+  </view>
+  <view class='flex align-items-center top-account' wx:if="{{login==true}}">
+    <!-- <view class='flex-1 center'>
+      <navigator url='/pages/shopcart/index' hover-class="none">
+        <view class='iconfont icon-myaccount-cart'></view>
+        <view>
+          <text class='body-sm'>我的购物车</text>
+        </view>
+      </navigator>
+    </view> -->
+    <view class='flex-1 center'>
+      <navigator url='/pages/myComment/index' hover-class="none">
+        <view class='iconfont icon-myaccount-coumment'></view>
+        <view>
+          <text class='body-sm'>我的评论</text>
+        </view>
+      </navigator>
+    </view>
+    <view class='flex-1 center'>
+      <navigator url='/pages/address/list/index' hover-class="none">
+        <view class='iconfont icon-myaccount-address'></view>
+        <view>
+          <text class='body-sm'>我的地址</text>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class="account-list">
+    <!-- <navigator class="item" url="/pages/myComment/index" data-next-key='all' wx:if="{{login==true}}" >
+      <image mode="widthFix" class="icon" src="../../images/ac_order.png"></image>
+      <text>我的评论</text>
+      <image mode="widthFix" class="arrow" src="../../images/ic_go2.png"></image>
+    </navigator> 
+    <navigator url="/pages/address/list/index" wx:if="{{login==true}}" >
+      <view class="item">
+        <image mode="widthFix" class="icon" src="../../images/ac_address.png"></image>
+        <text>收货地址</text>
+        <image mode="widthFix" class="arrow" src="../../images/ic_go2.png"></image>
+      </view>
+    </navigator> -->
+    
+    <view class="item" bindtap='shopPhoneCall'>
+      <label class='iconfont icon-myaccount-rx margin-right-common'></label>
+      <text>店铺电话</text>
+      <image mode="widthFix" class="arrow" src="../../images/ic_go2.png"></image>
+    </view>
+    <navigator class="item" url='/pages/problem/index/index'>
+      <label class='iconfont icon-myaccount-wt margin-right-common'></label>
+      <text>常见问题</text>
+      <image mode="widthFix" class="arrow" src="../../images/ic_go2.png"></image>
+    </navigator>
+    <view class='top-10'></view>
+    <navigator class="item" url='/pages/checkIn/index'>
+      <label class='iconfont icon-myaccount-ruzhu margin-right-common'></label>
+      <text>商家入驻</text>
+      <image mode="widthFix" class="arrow" src="../../images/ic_go2.png"></image>
+    </navigator>
+    <view class='top-10'></view>
+    <button class="item" open-type="contact">
+      <label class='iconfont icon-myaccount-kf margin-right-common'></label>
+      <text>平台在线客服</text>
+      <image mode="widthFix" class="arrow" src="../../images/ic_go2.png"></image>
+    </button>
+    <view class="item" bindtap='customer'>
+      <label class='iconfont icon-myaccount-rx margin-right-common'></label>
+      <text>平台客服热线</text>
+      <image mode="widthFix" class="arrow" src="../../images/ic_go2.png"></image>
+    </view>
+    <view class='top-10'></view>
+    <navigator url="/pages/feedback/index" wx:if="{{login==true}}">
+      <view class="item">
+        <label class='iconfont icon-myaccount-fk margin-right-common'></label>
+        <text>意见反馈</text>
+        <image mode="widthFix" class="arrow" src="../../images/ic_go2.png"></image>
+      </view>
+    </navigator>
+    <navigator class="item" url='/pages/about/index'>
+      <label class='iconfont icon-myaccount-about margin-right-common'></label>
+      <text>关于我们</text>
+      <image mode="widthFix" class="arrow" src="../../images/ic_go2.png"></image>
+    </navigator>
+
+  </view>
+  <view class="ac-logout" bindtap="loginOut" wx:if="{{login==true}}">
+    <text>退出账号</text>
+  </view>
+</view>

@@ -1,0 +1,55 @@
+.divider {
+  display: block;
+  height: 1px;
+  width: 100%;
+  margin: 24px 0;
+}
+
+.divider-with-text {
+  display: table;
+  white-space: nowrap;
+  text-align: center;
+  background: transparent;
+  font-weight: 500;
+  color: #000;
+  font-size: 28rpx;
+  margin: 16px 0;
+}
+
+.divider-with-text::after {
+  content: '';
+  display: table-cell;
+  position: relative;
+  top: 50%;
+  width: 50%;
+  border-top: 1px solid hsv(0, 0, 91%);
+  transform: translateY(50%);
+}
+
+.divider-with-text::before {
+  content: '';
+  display: table-cell;
+  position: relative;
+  top: 50%;
+  width: 50%;
+  border-top: 1px solid hsv(0, 0, 91%);
+  transform: translateY(50%);
+}
+
+.divider-vertical {
+  margin: 0 8px;
+  display: inline-block;
+  height: 0.9em;
+  width: 1px;
+  vertical-align: middle;
+  position: relative;
+  top: -0.06em;
+}
+
+.divider-inner-text{
+  display: inline-block;
+    padding: 0 24px;
+}
+.divider-dashed{
+  
+}

@@ -1,0 +1,19 @@
+<!--pages/problem/list/index.wxml-->
+<scroll-view scroll-y  bindscrolltolower="scrollLower" >
+  <view class='pcontent account-list'>
+   <block wx:for="{{list}}"  wx:key="id">
+      <view  class="item" >
+        <view class='title'>Q: {{item.title}}</view>
+        <view wx:for="{{item.content}}" class="details" wx:key="{{index}}" wx:for-item="citem">
+          <view class="classname" wx:if="{{citem.type=='image'}}">
+            <image src="{{citem.content}}" style="width:100%" mode="widthFix"></image>
+          </view>
+          <view class="classname" wx:if="{{citem.type=='text'}}">
+          <text>{{citem.content}}</text>
+          </view>
+        </view>
+      </view>
+    </block> 
+</view>
+
+</scroll-view>

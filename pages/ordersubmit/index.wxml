@@ -1,0 +1,239 @@
+<import src="../../template/toast/index.wxml" />
+<template is="toast" data="{{ ..._toast_ }}" /> 
+<form bindsubmit="postClickOrder" report-submit="true">
+<scroll-view class="order" style="height:{{windowHeight-50}}px" scroll-y="true">
+  <view class="pick-goods">
+    <view class="">
+      <text>提货方式</text>
+    </view>
+    <view class="flex submit-type" >
+     
+      <view  class="flex-1 type-cnet" bindtap="clickZiTi" wx:if="{{orderSubmitData.shopPay.isSelfTakeOpen==true}}">
+        <text  style="color:{{deliveryType==0?'#FF004C':'#999999'}}" >自提</text> 
+        <label wx:if="{{deliveryType==0}}" class='iconfont  icon-change post-dui' ></label>
+      </view>
+      <view class="flex-1 type-cnet-1 "  bindtap="clickDelivery" wx:if="{{orderSubmitData.shopPay.isSendOpen==true}}">
+        <text style="color:{{deliveryType==1?'#FF004C':'#999999'}}">送货上门</text> 
+        <label class='iconfont icon-change post-dui'  wx:if="{{deliveryType==1}}" ></label>
+      </view>
+      <!-- <view  class="flex-1 type-cnet-2" bindtap="clickKuaiDi" >
+        <text style="color:{{deliveryType==2?'#FF004C':'#999999'}}" >快递</text> 
+        <label wx:if="{{deliveryType==2}}" class='iconfont  icon-change post-dui'></label>
+      </view> -->
+    </view>
+  </view>
+  <view class='section' >
+    <view class="flex space-between align-items-center peison" wx:if="{{deliveryType==0}}"  >
+      <label class='iconfont  icon-dingwei' style="color:{{color}}"></label>
+      <view class="" style="width:{{windowWidth-100}}px">
+        <view >
+          <view class="body-base text-hidden-1">
+           {{shopInfo.address}}
+          </view>
+          <view class="">
+            <text class=" body-small">联系电话</text>
+            <text class=" body-small left-10">{{shopInfo.servicePhone}}</text>
+          </view>
+        </view>
+      </view>
+      <image class="ic"  src="{{serverImg}}/ic_go.png" style="width: 27rpx;height:45rpx"></image>
+    </view>
+    <view class="peison"  wx:if="{{deliveryType==0}}" bindtap='sendAgain'>
+      <view class="flex space-between align-items-center ">
+        <label class='iconfont icon-time' style="color:{{color}}"></label>
+        <view class="flex-1 "  style="width:{{windowWidth-100}}px;margin-left:10px;">
+            <view class="text-hidden-1" >
+              <text class="">自提时间</text>
+              <text class="red-color" style="color:{{color}}" >({{sendTime.timeSolt}})</text>
+            </view>
+        </view>
+        <image class="ic"  src="{{serverImg}}/ic_go.png" style="width: 27rpx;height:45rpx"></image>
+      </view>
+    </view>  
+  </view>
+  <view class="section">
+    <view class="flex space-between align-items-center peison" wx:if="{{deliveryType!=0 &&orderSubmitData.available.title}}" bindtap="chengeAdress"  >
+      <label class='iconfont  icon-dingwei' style="color:{{color}}"></label>
+      <view class="" style="width:{{windowWidth-100}}px">
+        <view >
+          <view class="text-hidden-1" >
+            <text class="body-base">{{orderSubmitData.available.title}}</text>
+          </view>
+          <view class=" body-small ">
+            <text>{{orderSubmitData.available.detail}}</text>
+          </view>
+          <view class="">
+            <text class="grey-color body-small">{{orderSubmitData.available.contact}}</text>
+            <text class="grey-color body-small">{{orderSubmitData.available.gender==0?"先生":"女士"}}</text>
+            <text class="grey-color body-small left-10">{{orderSubmitData.available.phone}}</text>
+          </view>
+        </view>
+      </view>
+      <image class="ic"  src="{{serverImg}}/ic_go.png" style="width: 27rpx;height:45rpx"></image>
+    </view>
+     <view class="peison" wx:if="{{deliveryType != 0&& !orderSubmitData.available.id}}">
+      <navigator url="/pages/address/select/index">
+        <view class="flex space-between align-items-center songhuo ">
+          <view class="address-name " bindtap="sendOut" style="width:{{windowWidth-100}}px">
+            <view >
+              <view class="text-hidden-1" >
+                <text class=" body-base ">选择收货地址</text>
+              </view>
+            </view>
+          </view>
+          <image class="ic"  src="{{serverImg}}/ic_go.png" style="width: 27rpx;height:45rpx"></image>
+        </view>
+      </navigator>
+    </view> 
+    <view class="peison"  wx:if="{{deliveryType==1}}" bindtap='sendAgain'>
+      <view class="flex space-between align-items-center ">
+        <!-- <image class="ic" style="width: 40rpx; height: 40rpx;"  src="{{serverImg}}/liji.png"></image> -->
+          <label class='iconfont  icon-time' style="color:{{color}}"></label>
+        <view class="flex-1"  style="width:{{windowWidth-100}}px">
+            <view class="text-hidden-1" >
+              <text class=" ">配送时间</text>
+              <text class="red-color" style="color:{{color}}" >(大约{{sendTime.timeSolt}}送达)</text>
+            </view>
+        </view>
+        <image class="ic"  src="{{serverImg}}/ic_go.png" style="width: 27rpx;height:45rpx"></image>
+      </view>
+    </view>  
+  </view>
+ 
+  <view class="pick-goods">
+    <label class='iconfont icon-shop' style="color:{{color}}"></label>
+    <text class="title">{{shopInfo.name}}</text>
+  </view>
+
+  <view  class="goods-bg">
+    <block wx:for="{{orderSubmitData.cart}}"  wx:key="id"  >
+      <view class="dish-item" style='background: #F8F7FC;'>
+        <view class="dish-item-wrp" style="display:block;">
+          <navigator style="float:left;display:inline-block;margin-right:10px" url="/pages/commodityDetails/index?id={{item.id}}">
+            <image class="image" src="{{item.imageUrl}}" style="width: 66px; height: 66px;"  />
+          </navigator>
+          <view class="dish-item-info-1 flex-1" style='margin-left:20rpx;width:300rpx;'>
+            <view class="text-hidden-1">
+              <label class='iconfont icon-manzhe'  style='margin-right:10rpx;' wx:if="{{item.discountFlag==true&&orderSubmitData.promotionMoney.promotionType==2 }}" ></label>
+              <text class="body-base">{{item.goodsName}}</text>
+            </view>
+            <view  class="grey-color" style='font-size:10px'> 
+              {{item.attrValues}}
+            </view>
+            <view class="dish-pi" style="overflow:hidden">
+                <text class="body-small grey-color">X {{item.number}}</text>
+                <text class="body-base right"  wx:if="{{item.discountFlag==false || orderSubmitData.promotionMoney.promotionType==1}}">￥{{item.price}}</text>
+                
+                <text class='zhekoujia right' wx:if="{{item.discountFlag==true&&orderSubmitData.promotionMoney.promotionType!=1}}">¥{{item.price}}</text>
+                <text class="body-base right"  wx:if="{{item.discountFlag==true&&orderSubmitData.promotionMoney.promotionType!=1}}">￥{{item.discountPrice}}</text>
+            </view>
+          </view>
+        </view>
+      </view>                   
+    </block>
+  </view>
+  <view class="section">
+      <view class="flex space-between align-items-center peison"  wx:if="{{orderSubmitData.promotionMoney.promotionType!=0}}">
+        <view class="submit-s1">
+          <text>商品金额</text>
+        </view>
+        <view class="submit-s2">
+          <text wx:if="{{orderSubmitData.promotionMoney.promotionType==2}}" style="color:{{color}}">￥{{orderSubmitData.promotionMoney.discount.totalMoney}}</text>
+          <text wx:if="{{orderSubmitData.promotionMoney.promotionType==1}}" style="color:{{color}}">￥{{allmoney}}</text> 
+        </view>
+      </view>
+      <view class="flex space-between align-items-center peison" wx:if="{{deliveryType!=0}}" >
+        <view class="submit-s1">
+          <text wx:if="{{deliveryType==1}}">配送费</text>
+          <text wx:if="{{deliveryType==2}}">快递费</text>
+        </view>
+        <view class="submit-s2">
+          <text style="color:{{color}}">￥{{orderSubmitData.deliveryTime.deliveryFee}}</text> 
+        </view>
+      </view>
+      <view class="flex space-between align-items-center peison" wx:if="{{orderSubmitData.promotionMoney.promotionType!=0}}" >
+        <view class="submit-s1" wx:if="{{orderSubmitData.promotionMoney.promotionType==1}}">
+          <label class='iconfont icon-manjian'></label>
+          <text>满减优惠</text>
+        </view>
+        <view class="submit-s1" wx:if="{{orderSubmitData.promotionMoney.promotionType==2}}">
+          <label class='iconfont icon-manzhe'></label>
+          <text>折扣优惠</text>
+        </view>
+        <view class="submit-s2">
+          <text wx:if="{{orderSubmitData.promotionMoney.promotionType==2}}" style="color:{{color}}">-￥{{orderSubmitData.promotionMoney.discount.preferential}}</text>
+          <text wx:if="{{orderSubmitData.promotionMoney.promotionType==1}}" style="color:{{color}}">-￥{{orderSubmitData.promotionMoney.fullCut.cutMoney}}</text> 
+        </view>
+      </view>
+      <view class="xiao-ji peison">
+        <text>小计</text>
+        <text class="all-money" style="color:{{color}}">￥{{premoney}}</text>
+    </view>
+  </view>
+ 
+  <view class="section">
+    <view class="flex space-between align-items-center peison"  bindtap="checkToWx" wx:if="{{orderSubmitData.shopPay.isWxPayOpen==true}}">
+      <view class="classname">
+        <text>微信支付</text>
+      </view>
+      <view class="classname" >
+        <label class='iconfont icon-check' style="color:{{color}}" wx:if="{{orderSubmitData.shopPay.selsetpay==1}}" ></label>
+        <label class='iconfont icon-nocheck'  style="color:{{greycolor}}" wx:else></label>
+      </view>
+    </view>
+    <view class="flex space-between align-items-center peison"   bindtap="checkToXz" wx:if="{{orderSubmitData.shopPay.isOffLinePayOpen==true}}">
+      <view class="classname">
+        <text>现金支付</text>
+      </view>
+      <view class="classname" >
+        <label class='iconfont icon-check' style="color:{{color}}"  wx:if="{{orderSubmitData.shopPay.selsetpay==0}}"   ></label>
+        <label class='iconfont icon-nocheck'  style="color:{{greycolor}}" wx:else ></label>
+      </view>
+    </view>
+  </view>
+  <view class='express-info'  wx:if="{{orderSubmitData.promotionMoney.promotionType!=0}}">
+    <label class='iconfont icon-angtan'></label>
+    <text>满减优惠与折扣商品不能同时共享</text>
+  </view>
+</scroll-view>
+
+<view class="flex footer-b">
+    <view class="flex-2 end-moey">
+      <text>实付款：</text>
+      <text class="price-t" style="color:{{color}}">￥{{premoney}} </text>
+    </view>
+    <view >
+      <button  class="clearing" formType="submit" style="background:{{color}}" >
+        提交订单
+      </button >
+    </view>
+</view>
+</form>
+
+<!-- 时间选择 -->
+<view wx:if="{{showdelivery==true}}">
+  <view class="drawer_screen" data-statu="close" catchtap="powerDrawer" ></view>
+  <view class='pick_change_date'>
+    <view class='data_day'>
+      <view class='left_day'>
+        <block>
+          <view class='item-day'>
+            <text>今天({{orderSubmitData.deliveryTime.whatDate}})</text>
+          </view>
+        </block>
+      </view>
+      <scroll-view scroll-y class='right_day' style="height: 258px;">
+        <block wx:for="{{orderSubmitData.deliveryTime.timeSolts}}" wx:key="{{index}}">
+          <view data-time="{{item.timeSolt}}" class='flex justify-content item-fei align-items-center {{item.check==true?"check":""}}' bindtap='clickItmeTime'>
+            <text class='flex-1 center'>{{item.timeSolt}}</text>
+            <text class='flex-1 center' wx:if="{{deliveryType==2}}">{{deliveryTime.deliveryFee}}元配送费</text>
+            <label class='iconfont icon-duihao' wx:if="{{item.check==true}}"></label>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view>
+      <view class='btn  btn-time' bindtap='cancal'>取消</view>
+    </view>
+  </view>
+</view>

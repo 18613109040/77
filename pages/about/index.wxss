@@ -1,0 +1,36 @@
+/* pages/about/index.wxss */
+.about-me{
+  text-align: center;
+  margin-top: 30%;
+}
+.about-me-image{
+  width: 190rpx;
+  height: 190rpx;
+  border-radius: 10rpx;
+}
+.about-me .text-name{
+  color: #FD5494 ;
+  font-size: 18px;
+  margin-top: 20rpx;
+}
+.about-me .about-v{
+  border: 1px solid #999999;
+  border-radius: 100rpx;
+  color: #333333;
+  width: 120rpx;
+  padding: 8rpx;
+  margin: 20rpx auto;
+  font-size: 14px;
+}
+.about-footer{
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  margin: 0px auto;
+  font-size: 12px;
+  color: #999999;
+}
+.about-footer .t{
+  margin-top: 5rpx;
+}

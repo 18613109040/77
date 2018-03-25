@@ -1,0 +1,13 @@
+<view class="about-me">
+  <image src='../../images/about-me.png' class='about-me-image'></image>
+  <view class='text-name'>77秒，即刻即达</view>
+  <!-- <view class='about-v' >v1.12</view> -->
+  <view class='about-footer'>
+    <view>
+      <text>思埠集团 @ 2017</text>
+    </view>
+    <view class='t'>
+      <text>http://www.sibu.cn</text>
+    </view>
+  </view>
+</view>

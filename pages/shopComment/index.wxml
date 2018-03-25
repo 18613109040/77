@@ -1,0 +1,19 @@
+<view class='comment-contents'>
+  <view class='tab-header'>
+    <view class='ul clearfix'>
+      <rich-text name="span" class="li comment" style="background:{{currentCommentIndex==0?color:''}}; color:{{currentCommentIndex==0?'#fff':''}}" bindtap='changeComment' data-index="0">全部（{{ratenumber.totalEvaluateNum}}）</rich-text>
+      <rich-text name="span" class="li comment" style="background:{{currentCommentIndex==1?color:''}};color:{{currentCommentIndex==1?'#fff':''}}" bindtap='changeComment' data-index="1">有图（{{ratenumber.hasImageNum}}）</rich-text>
+      <rich-text name="span" class="li comment" style="background:{{currentCommentIndex==2?color:''}}; color:{{currentCommentIndex==2?'#fff':''}}" bindtap='changeComment' data-index="2">赞{{ratenumber.goodEvaluateNum}}）</rich-text>
+      <rich-text name="span" class="li uncomment" style="background:{{currentCommentIndex==3?color:''}}; color:{{currentCommentIndex==3?'#fff':''}}" bindtap='changeComment' data-index="3">踩（{{ratenumber.badEvaluateNum}}）</rich-text>
+    </view>
+  </view>
+  <view class="tab-body">
+    <view class='comment-ul'>
+      <scroll-view scroll-y style="height: {{windowHeight-55}}px;" bindscroll="bindscroll" bindscrolltolower="scrollLower">
+        <view class='li' wx:key="{{index}}" wx:for="{{currentCommentIndex==0?allData:currentCommentIndex==1?hasImgData:currentCommentIndex==2?goodData:badData}}">
+          <custom-appraise commentData="{{item}}"  color="{{shopInfo.theme || theme}}"/>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

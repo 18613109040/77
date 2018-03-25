@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "分类",
+  "usingComponents": {
+    "custom-goods": "/components/goods/index",
+    "custom-carts":"/components/carts/index"
+  }
+}

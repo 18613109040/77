@@ -1,0 +1,77 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home_revise_sm/index",
+    "pages/home/index",
+    "pages/selectIndex/index",
+    "pages/shopComment/index",
+    "pages/account/index",
+    "pages/checkIn/index",
+    "pages/shopInfo/index",
+    "pages/about/index",
+    "pages/myComment/index",
+    "pages/order/order",
+    "pages/addComment/index",
+    "pages/address/add/index",
+    "pages/classification/index",
+    "pages/address/mapSelect/index",
+    "pages/ordersubmit/index",
+    "pages/offlinePay/index",
+    "pages/payType/index",
+    "pages/report/index",
+    "pages/search/index",
+    "pages/changecity/index",
+    "pages/feedback/index",
+    "pages/specialGoods/index",
+    "pages/showPics/index",
+    "pages/login/index",
+    "pages/address/list/index",
+    "pages/payed/index",
+    "pages/announcement/index",
+    "pages/problem/index/index",
+    "pages/problem/list/index",
+    "pages/accountEdit/index",
+    "pages/orderDetail/index",
+    "pages/commodityDetails/index",
+    "pages/shopcart/index",
+    "pages/register/index",
+    "pages/address/select/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#000000",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "black",
+    "navigationBarTitleText": "选择店铺",
+    "navigationBarTextStyle": "#ffffff"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#333333",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_fill.png"
+      },
+      {
+        "pagePath": "pages/classification/index",
+        "text": "分类",
+        "iconPath": "images/classify.png",
+        "selectedIconPath": "images/classify_fill.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "images/order.png",
+        "selectedIconPath": "images/order_fill.png"
+      },
+      {
+        "pagePath": "pages/account/index",
+        "text": "我的",
+        "iconPath": "images/people.png",
+        "selectedIconPath": "images/people_fill.png"
+      }
+    ]
+  }
+}

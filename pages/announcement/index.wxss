@@ -1,0 +1,14 @@
+
+.announcement{
+ 
+}
+.title{
+  font-size: 16px;
+  text-align: center;
+  padding: 20rpx 0;
+}
+.details{
+  font-size: 14px;
+   padding:0 30rpx;
+   color: #333;
+}

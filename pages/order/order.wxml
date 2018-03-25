@@ -1,0 +1,52 @@
+<view class="order-list" wx:if="{{is_empty==false}}">
+    <custom-backTop showTop="{{showTop}}"/>
+    <view class="o-list-item" wx:for="{{orderList.data}}" wx:key="{{item.id}}">
+      <view class="o-list-title">
+        <label class='iconfont icon-shop margin-right-common' style="color:{{shopInfo.theme}}"></label>
+        <text class="t-name"> {{item.shopName}}</text>
+        <view class="right">
+          <text class="t-status"> {{item.statusText}}</text>
+          <view class="iconfont icon-delete" style='color:#d2d2d2' bindtap='deOreder' data-id="{{item.id}}"></view>
+        </view>
+      </view>
+      <view class="o-list-pro" bindtap="onNextPage" data-id='{{item.id}}'>
+        <view class="goods-bg">
+          <view class='s-item-bottom'>
+            <scroll-view class="recommend_scroll_x_box" scroll-x="true" scroll-with-animation>
+              <view class="recommend_hot_box" wx:for="{{item.goods}}" wx:for-item="goods" wx:key="index">
+                <label class='iconfont icon-manzhe pos-top' wx:if="{{goods.discountPrice}}"></label>
+                <image src="{{goods.imgUrl}}" class="recommend_hot_image"></image>
+              </view>
+            </scroll-view>
+          </view>
+        </view>
+        <view class="o-pro-right">
+          <text class="p-name"><text>共</text>
+          <text style='color:{{shopInfo.theme}}'> {{item.goods.length}}</text>
+          <text>件商品,实付</text>
+          <text class="font-black" style='color:{{shopInfo.theme}}'>￥{{item.totalMoney}}</text></text>
+        </view>
+      </view>
+      <view class="o-list-footer clearfix" >
+        <text class='btn-default  right' wx:if="{{(item.status==3 || item.status==5)&& item.shipType!==0}}" data-item="{{item}}" bindtap="Reminder">催单</text>
+        <text class='btn-default right' wx:if="{{item.status==1 || (item.payType==0&&item.status==2)}}" data-id='{{item.id}}' bindtap="cancelOrder">取消订单</text>
+        <text class='btn-default  right' wx:if="{{item.status==5}}" data-id='{{item.id}}' bindtap='receipts' style='background:{{shopInfo.theme}};color: white'>确认收货</text>
+        <text class='btn-default  right' wx:if="{{item.status==1 && item.payType!==0}}" data-id="{{item.id}}" data-item="{{item}}" bindtap="goPay" style='background:{{shopInfo.theme}};color: white'>去支付</text>
+        <text class='btn-default  right' wx:if="{{item.status==6 && item.evaluateStatus==0}}" bindtap="goComment" data-id="{{item.id}}" style='background:{{shopInfo.theme}};color: white'>去评价</text>
+
+      </view>
+      <!-- <view class="o-list-footer clearfix">
+        <text class='btn-default right'>再来一单</text>
+      </view> -->
+    </view>
+    
+</view>
+<view class="classname" wx:if="{{is_empty==true}}" class="empty-content">
+  <image src="../../../images/no4.png" class="empty-image"></image>
+  <text class="text">亲，你还没有相关的订单</text>
+  <view class="classname">
+    <navigator url='/pages/classification/index' open-type="switchTab">
+      <button type="primary" class="btn" style="background:{{color}}">去购物</button>
+    </navigator>
+  </view>
+</view>

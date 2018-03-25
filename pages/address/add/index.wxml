@@ -1,0 +1,125 @@
+<!-- <view class="adress-add" >
+  <form bindsubmit="formSubmit" report-submit="true">
+    <view class="adress-add-item-sd flex">
+      <label>联系人:</label>
+      <view class="name flex-1">
+        <input type="text" name="contact" value="{{contact}}" class="flex-1" bindinput="changeImput" data-name="contact" placeholder="收货人姓名"/>
+        <view class="radio-group">
+          <radio-group name="gender" bindchange="radioChange">
+            <label ><radio value="0" checked="{{checked==0}}" color="{{color}}"/>先生</label>
+            <label class="left-lable"><radio value="1"  checked="{{checked==1}}" color="{{color}}"/>女士</label>
+          </radio-group> 
+        </view>
+      </view>
+    </view>
+    <view class="adress-add-item flex">
+      <label>手机：</label>
+      <input type="number" class="flex-1" value="{{phone}}"  name="phone"   bindinput="changeImput" data-name="phone" placeholder="联系您的手机号"/>
+    </view>
+    <view class="adress-add-group">
+      <text>收货地址 </text>
+    </view>
+    <view class="adress-add-item flex" bindtap="clickAdress">
+      <label>小区/大厦/学校：</label>
+      <input type="text"  name="title"   class="flex-1" disabled="true" value="{{title}}" placeholder="点击选择"/> 
+      <image src="../../../images/ic_go.png" class="go-btn"></image>
+    </view>
+    <view class="adress-add-item flex">
+      <label>楼号-门牌号：</label>
+      <input type="text" name="houseNumber"  value="{{houseNumber}}"   bindinput="changeImput"  data-name="houseNumber" class="flex-1" placeholder="例:8楼303室"></input>    
+    </view>
+    <view class="address-add-save" >
+      <button class="address-add-save-btn" formType="submit" style="background:{{color}}" >保存</button>
+    </view>
+  </form>
+</view> -->
+<view class='adress-add'>
+  <form bindsubmit="formSubmit" report-submit="true">
+  <view class='inline-1'>
+    <view class='view-1'>联系人：</view>
+    <view class='view-2'>
+      <input type="text" name="contact" value="{{contact}}" class="flex-1" bindinput="changeImput" data-name="contact" placeholder="收货人姓名"/>
+    </view>
+    <view class='view-3'>
+     <radio-group name="gender" bindchange="radioChange">
+            <label ><radio value="0" checked="{{checked==0}}" color="{{color}}"/>先生</label>
+            <label class="left-lable"><radio value="1"  checked="{{checked==1}}" color="{{color}}"/>女士</label>
+      </radio-group> 
+    </view>
+  </view>
+  <view class='inline-1'>
+   <view class='view-4'>联系电话：</view>
+    <view class='view-2'>
+      <input type="number" class="flex-1" value="{{phone}}"  name="phone"   bindinput="changeImput" data-name="phone" placeholder="联系您的手机号"/>
+    </view>
+  </view>
+  <view class="inine-2" >
+      <view  class="diwei-1" bindtap='clickDingwei'>
+        <text  style="color:{{clickDing==true?'#FF004C':'#999999'}}" >定位地址</text> 
+        <label  class='iconfont  icon-change post-dui' wx:if="{{clickDing==true}}" ></label>
+      </view>
+      <view class="diwei-2" bindtap='clickKuaiDi'>
+        <text style="color:{{clickDing==false?'#FF004C':'#999999'}}">快递地址</text> 
+        <label class='iconfont icon-change post-dui' wx:if="{{clickDing==false}}"  ></label>
+      </view>
+    </view>
+    <view class="adress-add-item" bindtap="clickAdress" wx:if="{{clickDing==true}}"  >
+      <label>小区/大厦/学校：</label>
+      <input type="text"  name="title"    disabled="true" value="{{title}}" placeholder="点击选择"/> 
+      <image src="../../../images/ic_go.png" class="go-btn"></image>
+    </view>
+    <view class="adress-add-item" bindtap="clickQuyu" wx:if="{{clickDing==false}}"  >
+      <label>所在地区：</label>
+      <input type="text"  name="title"    disabled="true" value="{{title}}" placeholder="请选择"/>
+      <image src="../../../images/ic_go.png" class="go-btn"></image> 
+    </view>
+    <view class="adress-add-item ">
+      <label>详细地址：</label>
+      <input type="text" style="flex:1" name="houseNumber"  value="{{houseNumber}}"   bindinput="changeImput"  data-name="houseNumber"  placeholder="可手动输入街道、楼牌号等想写地址"></input>    
+    </view>
+      <view class="address-add-save" >
+      <button class="address-add-save-btn" formType="submit" style="background:{{color}}" >保存</button>
+    </view>
+  </form>
+</view>
+<view hidden='{{showPick==false}}'>
+  <view class="sb-drawer_screen" catchtap="powerDrawer3"></view>
+  <view  class="sb-drawer_pick" >
+    <view class='pick-header'>
+      <view class='cancel' bindtap='cancel'>取消</view>
+      <view class='enter' bindtap='enter'>确定</view>
+    </view>
+    <picker-view indicator-style="height: 50px;" style=' height: 500rpx;'  value="[0,0,0]" bindchange="bindChange">
+      <picker-view-column>
+        <view wx:for="{{provinces}}" wx:key="{{item.code}}" style="line-height: 50px">{{item.name}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{citys}}" wx:key="{{item.code}}" style="line-height: 50px">{{item.name}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{countys}}" wx:key="{{item.code}}" style="line-height: 50px">{{item.name}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+  
+</view>
+
+<!-- <view  wx:if="{{showpage==true}}" style='overflow: hidden'>
+  <view class="flex  space-between top-search">
+      <view class="flex-1">
+        <icon type="search" size="18" class="icon-serch" />
+        <input class="search-in body-small" bindinput="bindAddressInput" value="{{searchData.title}}" placeholder="请输入收货地址" />
+      </view>
+      <view class="search-btn">
+        <button type="default" size="mini"  bindtap="searchBtn" hover-class="other-button-hover"> 搜索 </button>
+      </view>
+  </view>
+  <scroll-view wx:if="{{result.length>0}}" scroll-y="true" style="height:{{windowHeight-50}}px" >
+    <block wx:for="{{result}}" wx:key="id"  >
+      <view class="result" bindtap="clickSuchAdress" data-name="{{item}}">
+        <view class="result-title body-base">{{item.title}}</view>
+        <view class="result-adderss body-sm grey-color">{{item.address}}</view>
+      </view>
+    </block>
+  </scroll-view>
+</view> -->

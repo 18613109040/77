@@ -1,0 +1,27 @@
+
+<view class="section">
+  <view class='title'>支付剩余时间：15分钟0秒</view>
+</view>
+<view class='tip'>选择支付方式</view>
+<view class='section'>
+  <view class="item flex align-items-center space-between"  bindtap='customer' >
+    <view class='align-items-center flex'>
+      <image mode="widthFix" class="icon" src="../../images/ic_pay_bank.png"></image>
+      <text>银行卡支付</text>
+    </view>
+    <label class="radio rblock"  >
+        <icon wx:if="{{chooseType==0}}" type="success" size="20" color="{{color}}"  /> 
+        <icon wx:else type="circle" size="20"/>
+    </label>
+  </view>
+   <view class="item flex align-items-center space-between"  bindtap='customer' >
+    <view class='align-items-center flex'>
+      <image mode="widthFix" class="icon" src="../../images/ic_pay_wx.png"></image>
+      <text>微信支付</text>
+    </view>
+    <label class="radio rblock"  >
+        <icon wx:if="{{chooseType==1}}" type="success" size="20" color="{{color}}"  /> 
+        <icon wx:else type="circle" size="20"/>
+    </label>
+  </view>
+</view>

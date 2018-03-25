@@ -1,0 +1,34 @@
+page{
+  background: #fff;
+}
+.check-in{
+  background: #fff;
+  height: 100%;
+  width: 100%;
+}
+.check-in .top-img{
+  width: 100%;
+}
+.check-in .about-me-image{
+  width:200px;
+  height:200px;
+}
+.check-in  .text{
+  font-family: PingFang-SC-Regular;
+  font-size: 14px;
+  color: #70BDFF;
+  letter-spacing: 0.03px;
+  line-height: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+.check-in  .imagesp{
+  text-align: center;
+  margin-top: 20rpx;
+}
+.check-in-bottom{
+  display: flex;
+  width: 100%;
+  bottom: 0px;
+  position: fixed;
+}

@@ -1,0 +1,108 @@
+/* pages/addComment/index.wxss */
+.contaner {
+overflow:hidden;
+background:#f4f4f4;
+
+}
+.section {
+  padding:0 30rpx 0 30rpx;
+  background:#fff;
+  font-size:16px;
+
+}
+.colose-icon{
+  position: absolute;
+  margin-left: 100rpx;
+  z-index: 10;
+  color: #d2d2d2;
+
+}
+.xing-group{
+  text-align: center;
+  padding:60rpx 0;
+}
+.icon-xing{
+  display: inline-block;
+  margin-right: 30rpx;
+  
+}
+.input-content .textarea{
+  background: #FAFAFA;
+  border: 1px solid #EAEAEA;
+  font-size: 14px;
+  width: 92%;
+  min-height: 200rpx;
+  padding:20rpx 4%;
+}
+.upload-content{
+ align-items: center;
+ padding: 30rpx 0;
+ border-bottom: 1px solid #EAEAEA;
+}
+
+.upload-content .text{
+  padding-left: 30rpx;
+}
+.upload-content .t1{
+  font-size: 14px;
+  display: block;
+}
+.upload-content .t2{
+  font-size: 12px;
+  color: #d2d2d2;
+  display: block;
+}
+.goods-content .item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 14px;
+  color: #333;
+  
+}
+.goods-content  .pingfen{
+  width: 260rpx;
+  margin-left: 30rpx;
+  text-align: right;
+
+}
+.goods-content  .pingfen .icon{
+  
+  border-radius: 16px;
+  padding: 0 16rpx;
+  display: inline-block;
+  height: 44rpx;
+  line-height: 44rpx;
+}
+.goods-content  .pingfen .icon+.icon{
+  margin-left:30rpx;
+}
+.goods-content  .pingfen .icon .iconfont{
+  margin-right: 8rpx;
+  display: inline-block;
+}
+.goods-content  .name{
+  flex: 1;
+ 
+}
+.pingfen .icon{
+  display: inline-block;
+}
+.radio-content .text{
+    font-size: 14px;
+  color: #333333;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+.radio{
+  display: inline-block;
+  margin-right: 20rpx;
+  vertical-align: middle;
+}
+.no-section{
+  padding:0 30rpx 0 30rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}

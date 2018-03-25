@@ -1,0 +1,8 @@
+<view class="check-in" style="height:{{windowHeight}}">
+  <image src='../../images/top.png' mode="widthFix" class='top-img'></image>
+  <view class='imagesp'>
+    <image src='http://img.shop.sibumbg.cn/be3678495f4c4038a2a1129dfbcaff17.png' class='about-me-image' bindtap='saveImg'></image>
+  </view>
+  <view class='text'>点击预览图片，长按保存到相册</view>
+  <image src='../../images/bottom.png'  mode="widthFix" class='check-in-bottom'></image>
+</view>

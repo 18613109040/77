@@ -1,0 +1,126 @@
+/* order.wxss */
+page{
+  background-color: #fafafa;
+}
+.order-list{
+  margin-top: -20rpx;
+}
+.order-menu{
+  background-color: #fff;
+  height:44px;
+}
+.order-menu .items{
+  text-align: center;
+  width:33.33333%;
+  float: left;
+}
+.s-item-bottom{
+ padding-top: 10rpx;
+  
+}
+.pos-top{
+  position: absolute;
+  top:0px;
+
+}
+.recommend_scroll_x_box {
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+.recommend_hot_box {
+  margin-right: 16rpx;
+  display: inline-block;
+  background: #fff;
+ width: 130rpx; 
+  height: 130rpx;
+  position: relative;
+}
+.recommend_hot_image {
+  width: 128rpx; 
+  height: 128rpx;
+}
+.order-menu .items text{
+  font-size: 14px;
+  color: #666;
+  display: inline-block;
+  line-height: 44px;
+}
+.order-menu .items.active text{
+  color: #FFB511;
+  line-height: 42px;
+  border-bottom:2px solid #FFB511;
+}
+
+.o-list-item{
+  margin-top:20rpx;
+  background-color: #fff;
+}
+.o-list-title{
+  background-color: #fff;
+  padding:12px 10px;
+  line-height: 1;
+  position: relative;
+}
+.o-list-title .icon-delete{
+ margin:10rpx 20rpx 10rpx 20rpx;
+ position: absolute;
+ top:0;
+ right: 0;
+
+}
+.o-list-title .t-img{
+  margin-right: 10rpx;
+  width:20px;
+  height: 20px;
+}
+.o-list-title .t-name{
+  font-size:14px;
+  color: #4a4a4a;
+  width: 200px;
+white-space:nowrap;
+text-overflow:ellipsis;
+overflow:hidden;
+word-break:break-all;
+display:inline-block;
+
+}
+.o-list-title .t-status{
+  font-size:14px;
+  color: #999;
+  border-right: 1px solid #d8d8d8;
+  padding-right: 20rpx;
+  margin-right: 60rpx;
+ 
+}
+.o-pro-right{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+  color: #999;
+  padding: 30rpx 20rpx;
+}
+.font-black{
+  color: #151515;
+}
+
+.o-pro-item{
+  margin-top:5px;
+  line-height: 16px;
+}
+.o-list-pro .p-name{
+  font-size: 14px;
+  color: #666;
+}
+.o-list-pro .p-num{
+  font-size: 14px;
+  color: #666;
+  float: right
+
+}
+.o-list-footer{
+  border-top:1px solid #eaeaea;
+  padding: 12px 10px;
+}
+.o-list-footer .btn-default{
+  margin-left:10px;
+}

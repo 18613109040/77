@@ -1,0 +1,120 @@
+tip{
+  background: #DFDFDF ;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 14px;
+  color: #999999;
+}
+.searchLetter{
+    position: fixed;
+    right: 0;
+    width: 80rpx;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    color: #666;
+    z-index: 1
+}
+.searchLetter view{
+    height: 140rpx;
+}
+.touchClass{
+    background-color: rgba(0, 0, 0,0.5);
+    color: #fff;
+}
+.showSlectedLetter{
+    background-color: rgba(0, 0, 0,0.5);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top:50%;
+    left: 50%;
+    margin: -100rpx;
+    width: 200rpx;
+    height: 200rpx;
+    border-radius:20rpx; 
+    font-size: 52rpx;
+    z-index: 77
+}
+.selection{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.item_letter{
+    display: flex;
+    background-color: #f8f8f8;
+    height: 60rpx;
+    padding-left: 20rpx;
+    align-items: center;
+}
+.item_city{
+    display: flex;
+    background-color: #fff;
+    height: 80rpx;
+    padding-left: 20rpx;
+    align-items: center;
+    border-bottom: 1px solid #f8f8f8;
+}
+.top-search{
+  padding: 10rpx;
+}
+.float-left{
+  float: left;
+}
+.add-items{
+  padding: 20rpx 20rpx 40rpx 20rpx;
+  border-bottom: 1px solid #DDDDDD;
+  background: #FFFFFF;
+  box-shadow: 0 -7px 8px 0 rgba(41,38,38,0.08), 0 7px 8px 0 rgba(40,38,38,0.08);
+}
+.add-items +.shop-items{
+  margin-top: 20rpx;
+}
+.shop-items +.add-items{
+  margin-top: 20rpx;
+}
+.shop-items{
+
+  padding: 30rpx 20rpx;
+  font-size: 14px;
+  
+}
+.shop-items+.shop-items{
+  border-top: 1px solid #DDDDDD;
+}
+.shop-items:last-child{
+  border-bottom: 1px solid #DDDDDD;
+}
+.top-search .city{
+  width:160rpx;
+  border: 1px solid #DDDDDD;
+  border-radius: 10rpx;
+  text-align: center;
+  padding: 8rpx;
+  height:50rpx;
+  line-height:50rpx;
+  font-size: 16px;
+  position: relative;
+  margin-right: 20rpx;
+}
+.top-search .city .ic_tran{
+  display:block;
+  position:absolute;
+  top:27rpx;
+  right:7rpx;
+  width:0;
+  height:0;
+  border-left:8rpx solid transparent;
+  border-right:8rpx solid transparent;
+  border-top:16rpx solid #000;
+
+}
+.top-search .lingth-l{
+  line-height: 30rpx;
+}

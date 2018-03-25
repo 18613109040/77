@@ -1,0 +1,158 @@
+/* .iconfont{ font-family:"iconfont" !important; font-size:16px; font-style:normal; -webkit-font-smoothing: antialiased; -webkit-text-stroke-width: 0.2px; -moz-osx-font-smoothing: grayscale;}
+.icon-xing:after{
+  content: '\e631';
+  font-size: 30rpx;
+}
+
+.icon-manjian:after{
+  content: '\e623';
+  font-size: 40rpx;
+  color: #FF5F52;
+}
+
+.icon-manzhe:after{
+  content: '\e6ff';
+  font-size: 40rpx;
+   color: #CA80E5;
+}
+.typestr{
+  font-size: 10px;
+  color: white;
+  padding: 3rpx;
+  background: #FF5F52;
+  position: absolute;
+  
+}
+.shop-content-item{
+  margin-left: 180rpx;
+  min-height:140rpx;
+
+}
+.shop-info-item .shop-icon{
+  width: 160rpx;
+  height: 140rpx;
+  float: left;
+  border: 1px solid #E4E4E4;
+  border-radius: 10rpx;
+}
+.shop-info-item .shop-icon .image{
+  width: 160rpx;
+  height: 140rpx;
+  border-radius: 10rpx;
+  
+}
+.shop-info-item .shop-name{
+  font-size: 16px;
+  color: black;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+.shop-info-item .ininl-b{
+  display: inline-block
+}
+.shop-info-item .body-size{
+  font-size: 12px;
+  color: #656565;
+}
+.shop-info-item  .right{
+  float: right
+
+}
+.shop-info-item  .top-10{
+  margin-top: 10rpx;
+}
+.shop-info-item  .left-10{
+  margin-left: 10rpx;
+}
+.shop-content-item .shop-rater{
+  line-height: 40rpx;
+}
+.shop-info-item .distance{
+ border-left: 1px solid #ddd;
+ margin-left: 15rpx;
+ padding-left: 15rpx;
+}
+.shop-info-item .man-jian{
+  margin-top: 10rpx;
+font-size: 12px;
+color: #999999;
+  align-items: center;
+  display: flex;
+} */
+.header{
+  padding:10rpx 30rpx;
+}
+
+.center{
+ height: 160rpx;
+ display: flex;
+}
+
+.logo{
+  width: 160rpx;
+  height: 160rpx;
+}
+.center_text{
+  text-align: left;
+  padding-left: 30rpx;
+  
+}
+.trade_name{
+  font-size: 36rpx;
+ 
+}
+.price{
+    padding-top: 20rpx;
+  font-size: 24rpx;
+ 
+}
+.price text{
+  padding-right: 36rpx;
+}
+.star{
+   padding-top: 20rpx;
+    font-size: 24rpx;
+  color: #9B9B9B;
+   display: flex;
+   align-items: center;
+}
+.star_img_box{
+ width: 100rpx;
+}
+.ccc_star{
+  position: absolute;
+}
+
+.star text{
+  padding-right: 20rpx;
+}
+.star image{
+  height: 16rpx;
+  width: 16rpx;
+  padding-right: 5rpx;
+}
+.bottom{
+display: flex;
+justify-content:space-between;
+}
+.dress{
+font-size: 12px;
+color: #9B9B9B;
+padding-top: 34rpx;
+padding-bottom: 30rpx;
+white-space: nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.btn{
+  border-radius: 10rpx;
+  width: 136rpx;
+  height: 52rpx;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 52rpx;
+  color: #fff;
+  margin-top: 20rpx;
+}

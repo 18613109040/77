@@ -1,0 +1,215 @@
+.fill-content{
+  flex:1;
+}
+
+.top-search{
+  background: white;
+  padding: 20rpx;
+  border-bottom: 1px solid #ddd;
+}
+
+.l-classification{
+  font-size: 12px;
+  
+}
+.silebar-items{
+  border-bottom: 1px solid #e7e7e7;
+  position: relative;
+  padding-left: 10rpx;
+ 
+}
+.reddot{
+  position:absolute;
+  top:38rpx;
+  right:-20rpx;
+  background:#FF004C;
+  color:#fff;
+  border-radius:50%;
+  height: 10rpx;
+  width: 10rpx;
+  text-align: center;
+ 
+}
+.silebar-items texrich-text{
+  padding:20rpx 0;
+  display: block;
+}
+.silebar-items-select{
+  background: #e9e9e9;
+}
+.silebar-items .text{
+  display: block;
+  text-align: left;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  position: relative;
+}
+.list-top-1{
+  display: block;
+  text-align: left;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  position: relative;
+}
+.list-top{
+  display: block;
+  text-align: left;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  position: relative;
+}
+.silebar-items .text{
+   padding-top: 24rpx;
+  padding-bottom: 24rpx;
+  width: 120rpx;
+}
+.list-top-1{
+    padding-top: 24rpx;
+  padding-bottom: 24rpx;
+  width: 120rpx;
+}
+.list-top{
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  
+}
+
+
+.fill-content .dish-items{
+  background: #fff;
+  padding-left:30rpx;
+}
+.fill-content .dish-item{
+  padding-left: 0;
+}
+ .list-child .list-sho-change{
+  color: #646464;
+}
+.list-child{
+  text-align: center;
+  font-size: 12px;
+
+}
+.grey-classfy{
+  right: 20rpx;
+  position: absolute;
+  top:30rpx;
+}
+.w-arrow{
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-right: 6px solid #fff;
+  border-bottom: 6px solid transparent;
+  position: absolute;
+  right: 0;
+  top:27rpx;
+
+}
+
+
+ .list-child .list-top .list-sho-change{
+  color:#fff;
+  background: #FF004C;
+  border-radius:92rpx;
+  padding: 8rpx 16rpx;
+  min-width: 60rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+ 
+
+}
+ .list-child .list-sho-change{
+  max-width: 120rpx;
+  display: inline-block;
+ 
+}
+
+/*mask*/
+.drawer_screen { 
+ width: 100%; 
+ height: 100%; 
+ position: fixed; 
+ top: 0; 
+ left: 0; 
+ z-index: 1000; 
+ background: #333333; 
+ opacity: 0.6; 
+ overflow: hidden; 
+} 
+  
+/*content*/
+
+.gui_ge{
+  padding: 30rpx;
+}
+.gui_ge .rang{
+  background: #FFFFFF;
+  padding: 10rpx 30rpx 10rpx 30rpx;
+  border: 1px solid #DDDDDD ;
+  margin: 10rpx;
+}
+.gui_ge  .rang-change{
+  padding: 10rpx 30rpx 10rpx 30rpx;
+ 
+  margin: 10rpx;
+
+}
+
+.guige-name{
+  padding: 30rpx;
+}
+
+.number-flage{
+  position:absolute;
+  top:0rpx;
+  right:14rpx;
+  background:#FF004C;
+  color:#fff;
+  border-radius:50%;
+  font-size:9px;
+   height:30rpx;
+  line-height:30rpx;
+  min-width:30rpx;
+  text-align: center;
+
+
+}
+.search-btn{
+  position: relative;
+}
+.search-btn .ic-yuan{
+position:absolute;
+top:-18rpx;
+right:-10rpx;
+background:#FF004C;
+color:#fff;
+border-radius:16rpx;
+font-size:9px;
+height:30rpx;
+line-height:30rpx;
+
+
+}
+.search-btn .ic-cart{
+  margin-top: 13rpx;
+}
+.cart-count{
+  height: 100rpx;
+  line-height: 100rpx;
+  overflow: hidden;
+}
+.cart-count .dish-item-count{
+  padding-top: 0;
+}
+.cart-count .dish-item-count-text {
+  line-height: 100rpx;
+}
+.cart-count .dish-item-count-minus{
+  height: 100rpx;
+  line-height: 104rpx;
+}
+.cart-count .dish-item-count-plus{
+  height: 100rpx;
+  line-height: 104rpx;
+}

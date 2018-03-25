@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "77秒",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "comShop": "/components/newshop/index",
+    "component-divider":"/components/divider/index"
+  }
+}

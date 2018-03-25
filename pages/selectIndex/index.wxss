@@ -1,0 +1,127 @@
+/* pages/selectIndex/index.wxss */
+.top-search{
+  padding: 10rpx;
+}
+
+.float-left{
+  float: left;
+}
+.top-search .city{
+  width:160rpx;
+  border: 1px solid #DDDDDD;
+  border-radius: 10rpx;
+  text-align: center;
+  padding: 8rpx;
+  height:50rpx;
+  line-height:50rpx;
+  font-size: 16px;
+  position: relative;
+  margin-right: 20rpx;
+
+}
+.top-search .city .ic_tran{
+  display:block;
+  position:absolute;
+  top:27rpx;
+  right:7rpx;
+  width:0;
+  height:0;
+  border-left:8rpx solid transparent;
+  border-right:8rpx solid transparent;
+  border-top:16rpx solid #000;
+
+}
+.top-search .lingth-l{
+  line-height: 30rpx;
+}
+
+.shopIcon{
+  background: #FFFFFF;
+  border-radius: 5px;
+  box-shadow: 0 7px 8px 0 rgba(40,38,38,0.12);
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.input-s{
+  border: 1px solid #DDDDDD;
+  border-radius: 10rpx;
+  height: 66rpx;
+  line-height: 60rpx;
+  margin-left: 160rpx;
+  padding-left: 69rpx;
+  font-size: 16px;
+}
+
+.lingth-l .icon-serch{
+  position: absolute;
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+}
+
+.dingwei{
+  padding: 10rpx;
+  border: 1px solid #ddd;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  color: #999999;
+}
+.result{
+  padding: 20rpx;
+  border-top: 1px solid #DDDDDD;
+}
+
+.address-add{
+  padding: 20rpx;
+  background: white;
+  margin-top: 20rpx;
+}
+.address-my-i{
+ 
+  margin-top: 20rpx;
+
+}.address-thum{
+  margin-top: 10rpx;
+}
+.address-items{
+   padding: 20rpx;
+   background: white;
+   border-bottom: 1px solid #EAEAEA ;
+   position: relative;
+}
+.address-items.unavaible{
+  color: #999;
+}
+.address-items .unImg{
+  display: none;
+  width:128rpx;
+  height:128rpx;
+  position:absolute;
+  right:50rpx;
+  top:30rpx;
+  z-index:99;
+}
+.address-items.unavaible .unImg{
+  display: inline-block;
+}
+.result{
+  padding: 20rpx;
+  border-top: 1px solid #DDDDDD;
+}
+.ic_clock{
+  width: 36rpx;
+  height: 36rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.bg{
+  background: #F4F4F4;
+  padding: 10rpx 0px 10rpx 20rpx;
+}
+.adress-dingwei{
+  font-size: 16px;
+  background: white;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  padding: 15rpx;
+}

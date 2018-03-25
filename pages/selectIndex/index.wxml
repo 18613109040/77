@@ -1,0 +1,67 @@
+<view class="content-s">
+  <!-- <view class="top-search">
+    <view class="float-left city text-hidden-1" bindtap="cityClick">{{city}}
+      <rich-text name="span" class="ic_tran"></rich-text>
+    </view>
+    <view class="lingth-l">
+      <icon type="search" size="16" class="icon-serch" />
+      <input bindinput="bindAddressInput" placeholder="请输入地址" value="{{addressT}}" class="input-s" />
+    </view>
+  </view> -->
+  <view class="adress-dingwei flex align-items-center justify-content" bindtap='currentAdre'  wx:if="{{result.length==0}}">
+      <image src="{{serverImg}}/dingwei2.png" style="height: 50rpx;width:50rpx"></image>
+      <text>点击定位当前位置</text>
+  </view>
+  <scroll-view wx:if="{{result.length>0}}" scroll-y style="height: {{windowHeight-50}}px">
+    <block wx:for="{{result}}" wx:key="id">
+      <view class="result" bindtap="clickSuchAdress" data-name="{{item}}">
+        <view class="result-title body-base">{{item.title}}</view>
+        <view class="result-adderss body-sm grey-color">{{item.address}}</view>
+      </view>
+    </block>
+  </scroll-view>
+  <!-- <navigator url="{{url}}" wx:if="{{result.length==0}}">
+    <view class="address-add flex align-items-center space-between">
+      <text>新增收货地址</text>
+      <label class='iconfont  icon-address' style="color:{{color}}"></label>
+    </view>
+  </navigator> -->
+
+  <view class="address-my-i" wx:if="{{result.length==0&&adressList.length>0}}">
+    <image src="{{serverImg}}/ic_clock.png" class="ic_clock" />
+    <text class="grey-color body-small">我的收货地址</text>
+  </view>
+  <scroll-view scroll-y="true" wx:if="{{result.length==0}}" >
+    <block wx:for="{{adressList}}" wx:key="id">
+      <view class="address-items" data-available="{{item.available}}" bindtap="clickAdress" data-name="{{item}}">
+        <view class="text-hidden-1">
+          <text class="body-base">{{item.title}}</text>
+        </view>
+        <view class=" body-small">
+          <text>{{item.detail}}</text>
+        </view>
+        <view class="address-thum">
+          <text class=" body-small">{{item.contact}}</text>
+          <text class=" body-small">{{item.gender==0?"先生":"女士"}}</text>
+          <text class=" body-small"> {{item.phone}}</text>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <view class="address-my-i" wx:if="{{result.length==0}}">
+    <view class='bg'>
+      <image src="{{serverImg}}/ic_clock.png" class="ic_clock" />
+      <text class="grey-color body-small">附近地址</text>
+    </view>
+    <scroll-view wx:if="{{adressData.length>0}}" scroll-y>
+      <block wx:for="{{adressData}}" wx:key="id">
+        <view class="result"  bindtap="clickSuchAdress" data-name="{{item}}">
+          <view class="result-title body-base">{{item.title}}</view>
+          <view class="result-adderss body-sm grey-color">{{item.address}}</view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+</view>

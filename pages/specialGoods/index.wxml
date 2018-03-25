@@ -1,0 +1,22 @@
+
+<view class="container">
+    <view class='top-img'>
+      <image src="{{specialGoods.imgUrl}}" mode="widthFix" class='img' />
+    </view>
+    <view class="fill-content" style='box-sizing:border-box'>
+      
+        <block wx:for="{{specialGoods.goods}}" wx:key="id">
+          <custom-goods goods="{{item}}" isRest="{{shopInfo.isRest}}" componentType="1" class="custom-goods" color="{{shopInfo.theme || theme}}"  />
+        </block>
+     
+    </view>
+    <view catchtap="gotoCart" style="height:72rpx;width: 72rpx;" class='moveable-cart'>
+      <view class='number-cart' style="background:{{color}}" wx:if="{{allnumber>0}}">
+        {{allnumber}}
+      </view>
+      <view class='cart-shop-all' style='border: 1px solid {{color}}'>
+        <label class='iconfont icon-shopcart ' style="color:{{color}}"></label>
+      </view>
+    </view>
+</view>
+<custom-carts shoplist="{{shopcart}}" show="{{modelShow}}" allmoney='{{allmoney}}'  color="{{shopInfo.theme || theme}}" />

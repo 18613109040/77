@@ -1,0 +1,17 @@
+<view class="content">
+  <view class='comment-header' style='background: {{shopInfo.theme}}'>
+    <image src="{{userInfo.avatarUrl}}/w_200_h_200" class='myImg'></image>
+    <view class='info'>
+      <view class='name'>{{userInfo.nickName}}</view>
+      <view class='xinxi'>已贡献{{toalPage}}条评论</view>
+    </view>
+  </view>
+  <view class='comment-ul'>
+    <scroll-view scroll-y bindscroll="scroll"  style="height: {{windowHeight-175}}px; width:100%;" bindscrolltolower="scrollLower">
+      <block wx:for="{{commentList}}" wx:key="{{index}}">
+        
+      </block>
+    </scroll-view>
+  </view>
+
+</view>

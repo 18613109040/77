@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="register-form">
+  <form >
+    <view class="register-add-item flex align-items-center">
+      <image src="../../images/lo_head.png" class="r-icon" mode="widthFix"></image>
+      <input type="number" class="flex-1"   name="phone"   bindinput="changeImput" data-name="phone" placeholder="请输入手机号"/>
+    </view>
+    <view class="register-add-item flex align-items-center">
+      <image src="../../images/lo_pass.png" class="r-icon" mode="widthFix"></image>
+      <input type="number"  name="verifyCode"   bindinput="changeverifyCode" data-name="verifyCode" placeholder="请输入验证码"/>
+      <button class="btn" bindtap="getCode"  disabled="{{disabled}}" >{{name}}</button>
+    </view>
+    <view class="register-add-save" bindtap="bindCode">
+      <view class="btn-default  btn-block" style="background:{{color}}"  >绑定</view>
+    </view>
+    <view  class='ored'>
+    ——或——
+    </view>
+    <view class="register-add-save">
+     <button style="background:#09bb07;padding:1rpx" class="btn-default  btn-block" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信用户快速登录</button>  
+    </view>
+    <view class="tip">
+      根据国家政策，首次注册用户需要基于手机号进行实名认证，请完成绑定手机号操作
+    </view>
+     
+  </form>
+  <view class='xieyi'>
+    <text class='t1'>登录代表你已同意</text><navigator url="/pages/announcement/index?id=22&title=用户协议" class='t2' style='color:{{color}}'>《用户协议》</navigator>
+  </view>
+</view>

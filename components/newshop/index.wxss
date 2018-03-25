@@ -1,0 +1,62 @@
+
+
+.shop_details_title {
+  font-family: SIL-Hei-Med-Jian;
+  font-size: 16px;
+  line-height: 16px;
+  color: #2e2e2e;
+  letter-spacing: 0;
+  /*padding-top: 10rpx;*/
+  margin-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.shop_details_title view{
+  width: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stars_ligth {
+  width: 106rpx;
+  height: 20rpx;
+  position: relative;
+  bottom: 6rpx;
+  margin-right: 10rpx;
+}
+.stars_gray{
+  width: 106rpx;
+  height: 20rpx;
+  position: absolute;
+  left: 0;
+  top: 16rpx;
+}
+.center_details {
+ 
+  /*height: 20rpx;*/
+  /*padding-top: 10rpx;*/
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*.time {
+  display: block;
+  float: right;
+  margin-right: 140rpx;
+}*/
+
+.distribution {
+  padding-top: 3px;
+}
+
+.ininl-b{
+  font-size:14px;
+  display: inline-block;
+  margin-right: 3px;
+}
+

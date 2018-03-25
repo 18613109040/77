@@ -1,0 +1,48 @@
+ 
+ <template name="goodsItem">
+    <view class="dish-item">
+          <view class="dish-item-wrp">
+            <navigator url="/pages/commodityDetails/index?id={{item.id}}">
+              <view class="dish-item-pic"  data-id="{{item.id}}">
+                <image class="image"  src="{{item.imageUrl}}/w_300_h_300" style="width: 170rpx; height: 170rpx;" />
+              </view>
+            </navigator>
+            <view class="dish-item-info" >
+              <navigator url="/pages/commodityDetails/index?id={{item.id}}">
+                <view  data-id="{{item.id}}" class="dish-item-name" >
+                  <text class="  text-hidden-2 body-small">{{item.goodsName}}</text>
+                </view>
+              </navigator>
+              <view class="dish-item-details">
+                <text  class="goods-stock">库存 {{item.goodsStock||0}}</text>
+                <text class="goods-stock">月销 {{item.goodsSalenum||0}}</text>
+                <text class="goods-stock">赞 {{item.likeNum||0}}</text>
+              </view>
+              <view class="v-g3">
+                  <text class="goods-price" style="color:{{color}}">¥{{item.price}}</text>
+              </view>
+            </view>
+            <!--选择数量or规格 begin-->
+            <view class="dish-item-choose" wx:if="{{item.goodsStock>0}}" >
+               <view class="dish-item-count" wx:if="{{item.multiKinds==1}}">
+                  <text class="xuan-gui-ge" style="background:{{color}}"  bindtap="powerDrawer" data-statu="open" data-name="{{item}}">选规格</text>
+                </view>
+                <view class="dish-item-count" wx:if="{{item.multiKinds==0}}">
+                  <view class="dish-item-tab">
+                    <view hidden="{{item.number == 0}}" class="dish-item-count-minus" data-id="{{item.id}}" data-cid="{{item.id}}" data-itemdata="{{item}}" bindtap="minusCount">
+                      <!-- <image class="image" style="width: 48rpx; height:48rpx;" src="../../images/countMinus.png" /> -->
+                       <label class='iconfont icon-desc' style="color:#ddd"></label>
+                    </view>
+                  </view>
+                  <view class="dish-item-count-text dish-item-tab" hidden="{{item.number==0}}">
+                    <text style="color:{{color}}">{{item.number}}</text>
+                  </view>
+                  <view class="dish-item-tab" data-id="{{item.id}}" hidden="{{item.number > item.sales}}" data-cid="{{item.id}}" data-itemdata="{{item}}" bindtap="addCount">
+                  <label class='iconfont icon-add' style="color:{{color}}"></label>
+                  </view>
+                </view>
+            </view>
+            <!--选择数量or规格 end-->
+          </view>
+        </view>
+ </template>

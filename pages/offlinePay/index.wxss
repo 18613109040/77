@@ -1,0 +1,32 @@
+/* pages/offlinePay/index.wxss */
+.content{
+  text-align: center;
+}
+.t1{
+  padding-top: 180rpx;
+}
+.t1,.t2{
+  font-size: 14px;
+  text-align: center;
+  color: #999;
+
+}
+
+.img{
+  width: 480rpx;
+  margin: 30rpx 0;
+}
+.btn-content{
+    position: fixed;
+  left: 0;
+  bottom: 20rpx;
+  width: 100%;
+}
+.btn{
+  margin: 0 30rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  color: #fff;
+  font-size: 18px;
+
+}

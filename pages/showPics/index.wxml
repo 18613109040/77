@@ -1,0 +1,17 @@
+<!--pages/showPics/index.wxml-->
+<view class='showPic-Content align-items-center justify-content'>
+  <swiper current="{{currentIndex}}" bindchange="bindchange" indicator-dots="{{indicatorDots}}" style='height:{{windowHeight}}px;line-height:{{windowHeight}}px'
+  >
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <swiper-item >
+      <image src="{{item}}" class="slide-image" mode="widthFix"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+  <view class="swipe-btn-wrapper">
+
+    <view class='iconfont icon-arrow-right' style='color:{{color}}' wx:if="{{leftShow}}"></view>
+    <view class='iconfont icon-arrow-left' style='color:{{color}}' wx:if="{{rightShow}}"></view>
+  </view>
+</view>

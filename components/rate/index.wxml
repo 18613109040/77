@@ -1,0 +1,14 @@
+<view class='rate' >
+  <view   bindtap='onChange'  data-index="{{index}}" class="{{value>index&&value<index+1?'rate-star rate-half '+item.name:index+1<=value?'rate-star rate-full':'rate-star' }}" wx:for="{{starts}}" wx:key="{{index}}" >
+    <view class='rate-first iconfont icon-star' 
+          style='font-size: {{size}}rpx'
+         
+          data-keyCode="left"></view>
+    <view 
+          class='rate-second iconfont icon-star' 
+          style='font-size: {{size}}rpx'
+         
+          data-keyCode="right"
+    ></view>
+  </view>
+</view>

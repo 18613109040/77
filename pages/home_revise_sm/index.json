@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "选择店铺",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "comShop": "/components/newshop/index"
+  }
+}

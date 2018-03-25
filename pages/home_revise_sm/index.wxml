@@ -1,0 +1,64 @@
+<import src="../../template/toast/index.wxml" />
+<template is="toast" data="{{ ..._toast_ }}" />
+
+<view>
+  <view class='shop_details' 
+    wx:for="{{adressData}}"
+    wx:for-item="item"
+    wx:key="{{index}}"
+  >
+    <view>
+      <view class="shop_images" bindtap='redirectToHome' data-name="{{item}}">
+        <image class="logo_icon" src="{{item.businessTypeIconUrl}}"></image>
+        <image src="{{item.shopIcon}}" class='logo_img'></image>
+      </view>
+      <!-- 店铺信息 -->
+      <view bindtap='redirectToHome' class="flex-1" data-name="{{item}}">
+        <comShop item="{{item}}" />
+      </view>
+      
+    </view>
+    <!-- 显示活动信息 -->
+    <view class='purchase'>
+      <block wx:for-index="id" wx:for="{{item.promotionList}}" wx:key="id" wx:for-item="itemName">
+        <view>
+          <image class='bottom_img' src='../../images/discount_green@2x.png' wx:if="{{itemName.type===2}}"></image>
+          <image class='bottom_img' src='../../images/spell group_prink@2x.png' wx:if="{{itemName.type===1}}"></image>
+          <text>{{itemName.info||"折扣活动"}}</text>
+        </view>
+      </block>
+      <text wx:if="{{item.promotionList.length}}" class='active-nums'>{{item.promotionList.length}}个活动</text>
+    </view>
+    <!-- 店铺里的商品信息 -->
+    <view wx:if="{{item.recommendGoodsList.length}}" class='shop_show' justify-content="space-between">
+      <view 
+        class='img_list' 
+        wx:for="{{item.recommendGoodsList}}" 
+        wx:for-item="goods"
+        wx:key="goodsId"
+      >
+        <view bindtap='redirectToHome' data-name="{{item}}" data-id="{{goods.goodsId}}">
+          <image src='{{goods.goodsImgUrl}}' style='width:216rpx; height:216rpx'></image>
+          <text class='sweet'>{{goods.goodsName}}</text>
+          <view>
+            <text class='money'>￥ {{goods.price}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{!adressData.length}}">
+  <image class="empty-image" src="../../images/default/address.png"></image>
+  <text class="empty-text"></text>
+</view>
+
+
+
+
+
+
+
+
+

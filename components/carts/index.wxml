@@ -1,0 +1,63 @@
+<view class="classname">
+  <view class="drawer_screen" catchtap="closeTap" data-statu="close" wx:if="{{show}}"></view>
+  <view animation="{{animationData}}" class="drawer_box" wx:if="{{show}}" style='margin-top:-150px;'>
+    <view class="drawer_title ">
+      <view class="name">
+        <text class="body-base" style='color:{{color}}'>购物车</text>
+      </view>
+      <view class="x-calnel" catchtap="closeTap" data-statu="close">
+        <image src="../../images/popup_Close_black.png" style="width: 60rpx; height: 60rpx;"></image>
+      </view>
+    </view>
+    <view class="drawer_content">
+      <scroll-view scroll-y style="height: 540rpx;">
+        <block wx:for="{{shoplist}}" wx:key="{{index}}">
+          <view class="flex space-between align-items-center cart-count" >
+            <view class='image-url'>
+              <image src='{{item.imageUrl}}'></image>
+            </view>
+            <view class='goods-name'>
+              <view class="body-m text-hidden-1">{{item.goodsName}}</view>
+              <view class="price">
+                <text class="body-m" style='color:{{color}}'>¥{{item.totalMoney}}</text>
+              </view>
+              <view wx:if="{{item.discountFlag&&item.limitNum<item.number}}" class="shuoming">
+                含{{item.number-item.limitNum}}份原价商品
+              </view>
+            </view>
+           
+            <view class="dish-item-count">
+              <view class="dish-item-tab">
+                <view hidden="{{item.number <= 0}}" class="dish-item-count-minus" data-id="{{item.id}}" data-itemdata="{{item}}" data-cid="{{item.id}}" data-skuid="{{item.skuid}}" bindtap="shopMinusCount">
+                  <label class='iconfont icon-desc' style="color:{{greycolor}}"></label>
+                </view>
+              </view>
+              <view class="dish-item-count-text dish-item-tab" hidden="{{item.number==0}}">
+                <text style='color:{{color}}'>{{item.number}}</text>
+              </view>
+              <view class="dish-item-count-plus dish-item-tab" data-id="{{item.id}}" data-itemdata="{{item}}" data-cid="{{item.id}}" data-skuid="{{item.skuid}}" bindtap="shopAddCount">
+                <label class='iconfont icon-add' style="color:{{color}}"></label>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class="drawer_footer flex align-items-center space-between ">
+      <view class="classname">
+        <text class="money" style='color:{{color}}'>￥{{allmoney}}</text>
+      </view>
+      <view class="add_cart" style="background:{{color}}" bindtap='gotoClearing'>
+        <text class="body-small">去结算</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="toast_content_box" wx:if="{{isHide}}">
+  <view class="toast_content">
+    <view class="toast_content_text">
+      {{content}}
+    </view>
+  </view>
+</view>

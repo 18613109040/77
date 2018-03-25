@@ -1,0 +1,125 @@
+/* pages/myComment/index.wxss */
+.comment-header{
+  color: #fff;
+  text-align: center;
+  padding:30rpx 0 80rpx;
+}
+
+.comment-header .name{
+  font-size: 15px;
+}
+.comment-header .xinxi{
+  font-size: 12px;
+}
+.comment-header .myImg{
+  width: 144rpx;
+  height: 144rpx;
+  margin-bottom: 20rpx;
+  border-radius: 50%;
+
+  
+}
+.comment-ul .li{
+  margin-top: 20rpx;
+  background: #fff;
+  padding-left: 20rpx;
+  
+}
+.shop-title{
+  color: #333;
+  font-size: 16px;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #EAEAEA ;
+}
+.shop-title .icon-shop{
+  display: inline-block;
+  margin-right: 10rpx;
+  color: #999;
+}
+.shop-title .icon-arrow-left{
+  display: inline-block;
+  float: right;
+  color: #ddd;
+  margin-right: 20rpx;
+}
+.shop-title .icon-arrow-left::after{
+  font-size: 16px;
+}
+.comment-ul .li  .shop-comment{
+  display: flex;
+  padding-top: 20rpx;
+}
+.comment-ul .li  .myImg{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-top: 10rpx;
+}
+.comment-ul .li .comments{
+  flex: 1;
+  margin-left: 20rpx;
+  overflow:hidden;
+
+  
+  
+}
+.comment-ul .t0{
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.comment-ul .li .t1{
+  display: flex;
+  justify-content:space-between;
+  padding-right: 30rpx;
+}
+.comment-ul .li .t1 .name{
+  color: #333;
+  font-size: 14px;
+  flex:1;
+
+}
+.comment-ul .li .t1 .date{
+  width: 80px;
+  text-align: right;
+  padding-top: 5px;
+}
+.comment-ul .li .t1 .date,.comment-ul .li .t2,.comment-ul .li .t3,.comment-ul .li .t4{
+  font-size: 11px;
+  color: #999;
+}
+.comment-ul .li .t2,.comment-ul .li .t3,.comment-ul .li .t4,.comment-ul .t5{
+  padding-right: 30rpx;
+}
+.comment-ul .li .t3{
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+.comment-ul .li .t4{
+  padding-bottom: 20rpx;
+}
+.comment-ul  .t5{
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 14px;
+  color: #333;
+  border-top: 1px solid #EAEAEA ;
+  text-align: right;
+
+}
+.comment-ul .li .iconfont.icon-edit::after,.comment-ul .li .iconfont.icon-zan::after{
+  color: #999;
+  margin-right: 10rpx;
+ 
+}
+.comment-ul .li .t4 .iconfont.icon-edit::after,.comment-ul .li .iconfont.icon-zan::after{
+   font-size: 14px;
+}
+.comment-ul .li .icon-xing{
+  display: inline-block;
+  margin-right: 15rpx;
+  
+}
+.comment-ul .li .icon-xing::after{
+  font-size: 12px;
+}

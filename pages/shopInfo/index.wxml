@@ -1,0 +1,141 @@
+
+<view class="contaner">
+   <custom-shops  shopinfo="{{shopInfo || shopinfoinint}}"></custom-shops>
+  <view class='tabbars'>
+    <view class='bars'>
+      <view class='bar' bindtap='changeTab' data-key="{{0}}">
+        <text wx:if="{{tabKey==0}}" style='border-bottom:2px solid {{shopInfo.theme}};color:{{shopInfo.theme}}'>商家</text>
+        <text wx:else>商家</text>
+      </view>
+      <view class='bar' bindtap='changeTab' data-key="{{1}}">
+        <text wx:if="{{tabKey==1}}" style='border-bottom:2px solid {{shopInfo.theme}};color:{{shopInfo.theme}}'>评论</text>
+        <text wx:else>评论</text>
+      </view>
+    </view>
+  </view>
+  <view class='tabs-content'>
+    <!-- tab1 begin -->
+    <view class='tabpanel' wx:if="{{tabKey==0}}">
+      <view class=' section'>
+       <view class='boxone' bindtap="goPicsPage">
+        <view class="item"  data-resouce="shopQualifications">
+          <image src="../../images/ic_dangan.png" data-resouce="shopQualifications" class="ic"></image>
+          <text class="s1">查看档案</text>
+        </view>
+         <image class="right_ico" src="../../images/ic_go.png"></image>
+       </view>
+
+        <scroll-view class="recommend_scroll_x_box" scroll-x="true" scroll-with-animation wx:if="{{imageList.length>0}}">
+          <view class="recommend_hot_box" wx:for="{{imageList}}" wx:key="{{index}}" bindtap="goPicsPage" data-index='{{index}}' data-resouce="imageList">
+            <image src="{{item}}" class="recommend_hot_image" mode="scaleToFill"></image>
+          </view>
+        </scroll-view>
+      </view>
+      <view class="section">
+        <view class="item">
+          <image src="../../images/leixing.png" class="ic"></image>
+          <text class="s1">店铺类型</text>
+          <text>{{shopInfo.businessTypeStr}}</text>
+        </view>
+
+        <view class='boxone'bindtap="callPhone">
+        <view class="item" >
+          <image src="../../images/shop-pone.png" class="ic"></image>
+          <text class="s1">联系电话</text>
+          <text>{{shopInfo.servicePhone}}</text>
+        </view>
+         <image class="right_ico" src="../../images/ic_go.png"></image>
+        </view>
+
+        <view class="item">
+          <image src="../../images/peisongtime.png" class="ic"></image>
+          <text class="s1">营业时间</text>
+          <text>{{shopInfo.openingTime}}-{{shopInfo.closingTime}}</text>
+        </view>
+      </view>
+
+      <view class="section">
+        <view class="item">
+          <image src="../../images/peisong.png" class="ic"></image>
+          <text class="s1">配送服务</text>
+          <text>店铺自己配送</text>
+        </view>
+        <view class="item">
+          <image src="../../images/peisongtime.png" class="ic"></image>
+          <text class="s1">配送时间</text>
+          <text>{{shopInfo.distributionTime||''}}</text>
+        </view>
+      </view>
+
+      <view class="section">
+<view class='boxone' bindtap="reportSeller">
+        <view class="item" >
+          <image src="../../images/ic-warn.png" class="ic"></image>
+          <text class="s1">举报商家</text>
+        </view>
+         <image class="right_ico" src="../../images/ic_go.png"></image>
+</view>
+      </view>
+      <view class="section">
+        <view class="item gray">公告</view>
+        <view>
+          <view class="body-m">
+            <text>{{shopInfo.notice||''}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- tab1 end -->
+    <!-- tab2 begin -->
+    <view class='tabpanel' wx:if="{{tabKey==1}}">
+      <view class='pingfen'>
+          <view class='shangjia'>
+            <text >{{shopComment.totalScore}}</text>
+            <text>商家评分</text>
+          </view>
+          <view class='star_tow'>
+            <component-rate value="{{shopComment.totalScore}}" size="{{44}}" />
+          </view>
+      </view>
+      <view class='comment-contents'>
+        <view class='tab-header'>
+          <view class='ul'>
+            <rich-text wx:for="{{searchBar}}" wx:key="{{index}}" class="li comment" style="background:{{currentCommentIndex==index?color:''}}; color:{{currentCommentIndex==index?'#FF7920':''}}" bindtap='changeComment' data-index="{{index}}">{{item}}（{{evalutateNum[index]}}）</rich-text>
+          </view>
+        </view>
+        <view class="tab-body">
+          <view class='comment-ul'>
+            <view class='appraise-li' wx:for="{{evaluate[currentCommentIndex]}}" wx:key="{{index}}">
+              <view class='shop-comment'>
+                <image src="{{item.buyerImg}}" class='myImg'></image>
+                <view class='comments'>
+                  <view class='t1'>
+                    <text class='name text-hidden-1'>{{item.buyerName}}</text>
+                    <text class='date'>{{item.createDt}}</text>
+                  </view>
+                  <view class='t2'>
+                    <component-rate value="{{item.score}}" />
+                  </view>
+                  <view class='t3'>
+                    <text class="pingjia"> {{item.commentText}} </text>
+                  </view>
+                  <!-- <view class='t4'>
+                    <image wx:for="{{item.goodsComments}}" wx:for-item="goodsComments" wx:key="{{index}}" src="{{goodsComments.imgUrl}}" class="upImg" data-id='1' data-item="{{goodsComments}}"></image>
+                  </view> -->
+                  <view class='t4'>
+                    <image src="{{item.commentImg1}}" class="upImg" wx:if="{{item.commentImg1}}" bindtap='previewImage' data-id='1' data-item="{{item}}"></image>
+                    <image src="{{item.commentImg2}}" class="upImg" wx:if="{{item.commentImg2}}" bindtap='previewImage' data-id='2' data-item="{{item}}"></image>
+                    <image src="{{item.commentImg3}}" class="upImg" wx:if="{{item.commentImg3}}" bindtap='previewImage' data-id='3' data-item="{{item}}"></image>
+                  </view>
+                  <view class='t6' wx:if="{{item.shopReply}}">
+                    <text> 商家回复：{{item.shopReply}} </text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

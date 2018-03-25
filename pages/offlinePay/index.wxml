@@ -1,0 +1,7 @@
+<view class="content">
+  <view class='t1'>扫一扫向商家付款</view>
+  <image src="../../images/code.jpg" mode="widthFix" class='img'></image>
+  <view class='t2'>确认支付自动识别二维码</view>
+  <view class='btn-content'><button class='btn' style='background:{{color}}'>确认支付：¥366.5</button></view>
+  
+</view>
